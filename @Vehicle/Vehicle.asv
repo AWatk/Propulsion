@@ -153,58 +153,74 @@ classdef Vehicle
         %       /Set Functions********************************************
         
         %       Additional Functions**************************************
-        function solution = homework1_propagate(obj,g0,R0,tspan)
-            solution = ode45(@(t,y) hw1_prop_eq(t,y,g0,R0,...
+        function struct = homework1_propagate(obj,tspan)
+            
+            % Define celestial body constants
+            g0 = 9.81; %m/s^2
+            R0 = 6400000; %m
+            
+           
+            
+            sol = ode45(@(t,y) hw1_prop_eq(t,y,g0,R0,...
                 obj.Thrust,obj.Mass,obj.FuelMassDot),...
                 tspan,[obj.Sv(3) obj.Sv(6)]);
+            
+            
+            xint = linspace(tspan(1),tspan(2),1000);
+            [y,yp] = deval(sol, xint);
+            struct.position = y(1,:);
+            struct.velocity = y(2,:);
+            struct.time = xint/(24*3600);
+            
+            %define ode function to pass to ode45
+            function dy = hw1_prop_eq(~,y,g0,R0,Thrust,fuelMassDot)
+                dy = zeros(2,1);
+                dy(1) = y(2);
+                dy(2) = -g0*R0^2/y(1)^2 + Thrust/(y(3));
+                dy(3) = fuelMassDot;
+            end
         end
-            %       /Additional Functions*************************************
-        end %/methods
-        
-        %       Helper Functions******************************************
-        methods(Access = private)
-            function obj = convertPropertyUnits(obj,cf)
-                for prop=obj.UnitConversionIndex'
-                    if ~strcmp(prop{1}, 'Sv')
+        %       /Additional Functions*************************************
+    end %/methods
+    
+    %       Helper Functions******************************************
+    methods(Access = private)
+        function obj = convertPropertyUnits(obj,cf)
+            for prop=obj.UnitConversionIndex'
+                if ~strcmp(prop{1}, 'Sv')
+                    obj.(prop{1}) = obj.(prop{1})*cf(prop{2});
+                else
+                    if strcmp(obj.PrivateCoordinateSystem, 'Cartesian')
                         obj.(prop{1}) = obj.(prop{1})*cf(prop{2});
-                    else
-                        if strcmp(obj.PrivateCoordinateSystem, 'Cartesian')
-                            obj.(prop{1}) = obj.(prop{1})*cf(prop{2});
-                        elseif strcmp(obj.PrivateCoordinateSystem, 'Spherical')
-                            sv = obj.Sv;
-                            obj.Sv(3) = sv(3)*cf(prop{2});
-                            obj.Sv(6) = sv(6)*cf(prop{2});
-                            obj.Sv(9) = sv(9)*cf(prop{2});
-                        end
+                    elseif strcmp(obj.PrivateCoordinateSystem, 'Spherical')
+                        sv = obj.Sv;
+                        obj.Sv(3) = sv(3)*cf(prop{2});
+                        obj.Sv(6) = sv(6)*cf(prop{2});
+                        obj.Sv(9) = sv(9)*cf(prop{2});
                     end
                 end
             end
-            
-            function obj = convertPropertyCoordinates(obj,newCS)
-                sv = obj.Sv;
-                switch(obj.PrivateCoordinateSystem)
-                    case 'Cartesian'
-                        if strcmp(newCS, 'Spherical')
-                            [az,el,r] = cart2sph(sv(1),sv(2),sv(3));
-                            [vaz,vel,vr] = cart2sph(sv(4),sv(5),sv(6));
-                            [aaz, ael, ar] = cart2sph(sv(7),sv(8),sv(9));
-                            obj.Sv = [az,el,r,vaz,vel,vr,aaz,ael,ar];
-                        end
-                    case 'Spherical'
-                        if strcmp(newCS, 'Cartesian')
-                            [x,y,z] = sph2cart(sv(1),sv(2),sv(3));
-                            [vx,vy,vz] = sph2cart(sv(4),sv(5),sv(6));
-                            [ax,ay,az] = sph2cart(sv(7),sv(8),sv(9));
-                            obj.Sv = [x,y,z,vx,vy,vz,ax,ay,az];
-                        end
-                end
-            end
-            
-            function dy = hw1_prop_eq(t,y,g0,R0,Thrust,vehicleMass,fuelMassDot)
-dy = zeros(2,1);
-dy(1) = y(2);
-dy(2) = -g0*R0^2/y(1)^2 + Thrust/(vehicleMass + fuelMassDot*t);
-end
         end
         
+        function obj = convertPropertyCoordinates(obj,newCS)
+            sv = obj.Sv;
+            switch(obj.PrivateCoordinateSystem)
+                case 'Cartesian'
+                    if strcmp(newCS, 'Spherical')
+                        [az,el,r] = cart2sph(sv(1),sv(2),sv(3));
+                        [vaz,vel,vr] = cart2sph(sv(4),sv(5),sv(6));
+                        [aaz, ael, ar] = cart2sph(sv(7),sv(8),sv(9));
+                        obj.Sv = [az,el,r,vaz,vel,vr,aaz,ael,ar];
+                    end
+                case 'Spherical'
+                    if strcmp(newCS, 'Cartesian')
+                        [x,y,z] = sph2cart(sv(1),sv(2),sv(3));
+                        [vx,vy,vz] = sph2cart(sv(4),sv(5),sv(6));
+                        [ax,ay,az] = sph2cart(sv(7),sv(8),sv(9));
+                        obj.Sv = [x,y,z,vx,vy,vz,ax,ay,az];
+                    end
+            end
+        end
     end
+    
+end

@@ -159,24 +159,30 @@ classdef Vehicle
             g0 = 9.81; %m/s^2
             R0 = 6400000; %m
             
-           
+           y0 = zeros(3,1);
+           y0(1) = obj.Sv(3);
+           y0(2) = obj.Sv(6);
+           y0(3) = obj.Mass;
             
             sol = ode45(@(t,y) hw1_prop_eq(t,y,g0,R0,...
-                obj.Thrust,obj.Mass,obj.FuelMassDot),...
-                tspan,[obj.Sv(3) obj.Sv(6)]);
+                obj.Thrust,obj.FuelMassDot),...
+                tspan,y0);
             
             
             xint = linspace(tspan(1),tspan(2),1000);
             [y,yp] = deval(sol, xint);
             struct.position = y(1,:);
             struct.velocity = y(2,:);
+            struct.acceleration = yp(2,:);
+            struct.mass = y(3,:);
             struct.time = xint/(24*3600);
             
             %define ode function to pass to ode45
-            function dy = hw1_prop_eq(t,y,g0,R0,Thrust,vehicleMass,fuelMassDot)
+            function dy = hw1_prop_eq(~,y,g0,R0,Thrust,fuelMassDot)
                 dy = zeros(2,1);
                 dy(1) = y(2);
-                dy(2) = -g0*R0^2/y(1)^2 + Thrust/(vehicleMass + fuelMassDot*t);
+                dy(2) = -g0*R0^2/y(1)^2 + Thrust/(y(3));
+                dy(3) = fuelMassDot;
             end
         end
         %       /Additional Functions*************************************

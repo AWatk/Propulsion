@@ -51,9 +51,17 @@ thrustSolution = thrustVehicle.homework1_propagate([t0 tf]);
 % Plot and discuss results
 
 posfig = figure(1);
-plot(baseSolution.time, baseSolution.position, 'bd',...
-    thrustSolution.time, thrustSolution.position, 'kd');
+plot(baseSolution.time, baseSolution.position, 'b',...
+    thrustSolution.time, thrustSolution.position, 'k');
 
 velfig = figure(2);
-plot(baseSolution.time, baseSolution.velocity, 'bd',...
-    thrustSolution.time, thrustSolution.velocity, 'kd');
+plot(baseSolution.time, baseSolution.velocity, 'b',...
+    thrustSolution.time, thrustSolution.velocity, 'k');
+
+accelfig = figure(3);
+plot(baseSolution.time, baseSolution.acceleration, 'b',...
+    thrustSolution.time, thrustSolution.acceleration, 'k');
+
+massfig = figure(4);
+plot(baseSolution.time, baseSolution.mass, 'b',...
+    thrustSolution.time, thrustSolution.mass, 'k');
