@@ -50,18 +50,23 @@ thrustSolution = thrustVehicle.homework1_propagate([t0 tf]);
 %% Analysis
 % Plot and discuss results
 
+%set line width
+lw = 3;
+
 posfig = figure(1);
 plot(baseSolution.time, baseSolution.position, 'b',...
-    thrustSolution.time, thrustSolution.position, 'k');
+    thrustSolution.time, thrustSolution.position, 'k','LineWidth',lw);
+posfig.Units = 'normalized';
+posfig.Position = [0.05 0.05 0.45 0.45];
 
 velfig = figure(2);
 plot(baseSolution.time, baseSolution.velocity, 'b',...
-    thrustSolution.time, thrustSolution.velocity, 'k');
+    thrustSolution.time, thrustSolution.velocity, 'k','LineWidth',lw);
 
 accelfig = figure(3);
 plot(baseSolution.time, baseSolution.acceleration, 'b',...
-    thrustSolution.time, thrustSolution.acceleration, 'k');
+    thrustSolution.time, thrustSolution.acceleration, 'k','LineWidth',lw);
 
 massfig = figure(4);
 plot(baseSolution.time, baseSolution.mass, 'b',...
-    thrustSolution.time, thrustSolution.mass, 'k');
+    thrustSolution.time, thrustSolution.mass, 'k','LineWidth',lw);

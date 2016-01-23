@@ -169,7 +169,9 @@ classdef Vehicle
                 tspan,y0);
             
             
-            xint = linspace(tspan(1),tspan(2),1000);
+            xint1 = tspan(1):1:600;
+            xint2 = 660:60:tspan(2);
+            xint = [xint1 xint2];
             [y,yp] = deval(sol, xint);
             struct.position = y(1,:);
             struct.velocity = y(2,:);
