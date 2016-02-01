@@ -1,3 +1,11 @@
+%% Vehicle Class
+%The following is a matlab class defining a vehicle that contains vehicle
+%properties, the ability to switch between english and metric units, the
+%ability to switch between cartesian and spherical coordinates, and will
+%contain built in functions that will aid in Propulsion assignments and
+%personal research.
+
+
 classdef Vehicle
     
     properties(Constant, Access = private)
@@ -153,6 +161,7 @@ classdef Vehicle
         %       /Set Functions********************************************
         
         %       Additional Functions**************************************
+%% Vehicle Homework 1 Function Definition
         function struct = homework1_propagate(obj,tspan)
             
             % Define celestial body constants
