@@ -3,6 +3,9 @@ function P = stdAtmP(altitude)
 % Earth atmosphere model. The function is based on linear interpolation of 
 % temperature boundary conditions within the atmosphere
 %
+% For more information, see <a href="matlab: 
+% web('http://www.aerostudents.com/files/aerodynamicsA/relationsPressureHeight.pdf')">this online pdf</a>.
+%
 % Usage:
 %  P = STDATMP(alt)
 % 

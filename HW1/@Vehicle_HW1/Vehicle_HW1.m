@@ -42,7 +42,7 @@ classdef Vehicle_HW1
     methods
         
         %       Ctor******************************************************
-        function obj = Vehicle(mass,fuelmass,fuelmassdot,sv,Thrust,CS,Units)
+        function obj = Vehicle_HW1(mass,fuelmass,fuelmassdot,sv,Thrust,CS,Units)
             if nargin > 0
                 switch(CS)
                     case 'Cartesian'
