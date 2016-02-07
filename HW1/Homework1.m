@@ -91,8 +91,8 @@ drdt = escapeVelocity; %initial radial velocity m/s
 sv = [0 0 r 0 0 drdt 0 0 0]; %state vector [pos vel accel]
 %%
 % Instantiate vehicles
-baseVehicle = Vehicle(vehicleMass, 0, 0, sv, 0, CS, units); %base w/o Thrust
-thrustVehicle = Vehicle(vehicleMass, fuelMass,...
+baseVehicle = Vehicle_HW1(vehicleMass, 0, 0, sv, 0, CS, units); %base w/o Thrust
+thrustVehicle = Vehicle_HW1(vehicleMass, fuelMass,...
     dmdt, sv, Thrust, CS, units); %vehicle w/Thrust
 %% Solver Execution
 % After defining a time span over which to solve the problem, the ode45
