@@ -1,4 +1,4 @@
-classdef Vehicle
+classdef Vehicle < handle
     % Vehicle A vehicle with components such as thrusters,structures, etc.
     %   Vehicle in general is a container class for all vehicle
     %   subcomponents. For now, these subcomponents are either thrusters or
@@ -191,17 +191,17 @@ classdef Vehicle
         %       /Get Functions********************************************
         
         %       Set Functions*********************************************
-        function obj = set.Units(obj,newUnits)
+        function set.Units(obj,newUnits)
             switch(newUnits)
                 case 'Metric'
                     if ~strcmp(obj.PrivateUnits, newUnits)
                         obj.PrivateUnits = newUnits;
-                        obj =convertPropertyUnits(obj,1./obj.ConversionFactors);
+                        convertPropertyUnits(obj,1./obj.ConversionFactors);
                     end
                 case 'English'
                     if ~strcmp(obj.PrivateUnits, newUnits)
                         obj.PrivateUnits = newUnits;
-                        obj = convertPropertyUnits(obj,obj.ConversionFactors);
+                        convertPropertyUnits(obj,obj.ConversionFactors);
                     end
                 otherwise
                     error('Vehicle:InvalidValue',...
@@ -209,16 +209,16 @@ classdef Vehicle
             end
         end
         
-        function obj = set.CoordinateSystem(obj,newCS)
+        function set.CoordinateSystem(obj,newCS)
             switch(newCS)
                 case 'Cartesian'
                     if ~strcmp(obj.PrivateCoordinateSystem, newCS)
-                        obj = convertPropertyCoordinates(obj,newCS);
+                        convertPropertyCoordinates(obj,newCS);
                         obj.PrivateCoordinateSystem = newCS;
                     end
                 case 'Spherical'
                     if ~strcmp(obj.PrivateCoordinateSystem, newCS)
-                        obj = convertPropertyCoordinates(obj,newCS);
+                        convertPropertyCoordinates(obj,newCS);
                         obj.PrivateCoordinateSystem = newCS;
                     end
                     
@@ -229,7 +229,7 @@ classdef Vehicle
             end
         end
         
-        function obj = set.sv(obj,sv)
+        function set.sv(obj,sv)
             if ~isequal(size(sv),[1,9])
                 error('Vehicle:InvalidValue',...
                     'State vector must be 1x9 vector');
@@ -344,7 +344,7 @@ classdef Vehicle
             % the entire time span
             for t = obj.listThrustersOn
                 tmp = obj.Thrusters(t{1});
-                if tmp.mass_fuel - (tspan(2)-tspan(1))*obj.mass_flowrate <0
+                if tmp.mass_fuel - (tspan(2)-tspan(1))*tmp.mass_flowrate <0
                     error('Vehicle:Thruster',...
                         ['Thruster "%s" cannot fire for the '...
                         'duration of time span [%0.1f %0.1f].'],...
@@ -352,7 +352,8 @@ classdef Vehicle
                 end
             end
             
-            %ensure we are in spherical coordinates
+            % ensure we are in spherical coordinates
+            tmpCS = obj.CoordinateSystem;
             obj.CoordinateSystem = 'Spherical';
             
             % define rho, either using standard model or provided value
@@ -376,25 +377,37 @@ classdef Vehicle
             %   y1' = y2
             %   y2' = (1/y3)(T - y3*g*y1 - 0.5*cd*rho(y1)*area*y2^2)
             %   y3' = mass_flowrate
-            function dy = odefun(~,y,rho,thrust,cd,area,mass_flowrate)
+            function dy = odefun(~,y,rho,obj)
                 dy = zeros(3,1);
                 dy(1) = y(2);
-                dy(2) = (1/y(3))*(thrust ...
+                dy(2) = (1/y(3))*(obj.thrust ...
                     - y(3)*g(y(1)) ...
-                    -(y(2)/abs(y(2)+1e-10))*0.5*cd*...
-                    rho(y(1))*area*y(2)^2);
-                dy(3) = -mass_flowrate;
+                    -(y(2)/abs(y(2)+1e-10))*0.5*obj.cd*...
+                    rho(y(1))*obj.area*y(2)^2);
+                dy(3) = -obj.mass_flowrate;
+                                
             end
             
-            %run ode45 solver with anonymous function call to parameterize
-            %odefun 
-            sol = ode45(@(t,y) odefun(t,y,rho,obj.thrust,...
-                obj.cd,obj.area,obj.mass_flowrate),tspan,y0);
+            % run ode45 solver with anonymous function call to parameterize
+            % odefun 
+            sol = ode45(@(t,y) odefun(t,y,rho,obj),tspan,y0);
             
-            %update vehicle state (position, mass)
-%             [y yp] = deval(sol,tspan(2));
+            % update vehicle (state vector, mass)
+            % sv first
+            [y, yp] = deval(sol,tspan(2));
+            obj.sv(3) = y(1);
+            obj.sv(6) = y(2);
+            obj.sv(9) = yp(2);
+            % then mass
+            for t = obj.listThrustersOn
+                tmp = obj.Thrusters(t{1});
+                tmp.mass_fuel = tmp.mass_fuel ...
+                                -(tspan(2)-tspan(1))*tmp.mass_flowrate;
+                obj.Thrusters(t{1}) = tmp;
+            end
             
-            
+            %convert to original coordinate system
+            obj.CoordinateSystem = tmpCS;
         end
         
         %       /Additional Functions*************************************
@@ -402,7 +415,7 @@ classdef Vehicle
     
     %       Helper Functions******************************************
     methods(Access = private)
-        function obj = convertPropertyUnits(obj,cf)
+        function convertPropertyUnits(obj,cf)
             for prop=obj.UnitConversionIndex'
                 if ~strcmp(prop{1}, 'sv')
                     obj.(prop{1}) = obj.(prop{1})*cf(prop{2});
@@ -419,7 +432,7 @@ classdef Vehicle
             end
         end
         
-        function obj = convertPropertyCoordinates(obj,newCS)
+        function convertPropertyCoordinates(obj,newCS)
             Sv = obj.sv;
             switch(obj.PrivateCoordinateSystem)
                 case 'Cartesian'
