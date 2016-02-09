@@ -10,6 +10,7 @@ classdef Vehicle
     %   state vector, cross-sectional area, drag coefficient, etc.
     
     properties
+        name = 'vehicle';
         sv = zeros(1,9); % 1x9 3D state vector [position velocity acceleration] of CoM
         area = 0; % Cross-sectional area of vehicle
         cd = 0; % Drag coefficient of vehicle
@@ -20,16 +21,26 @@ classdef Vehicle
     properties(Dependent)
         Units % Unit system used (Metric, English)
         CoordinateSystem % Coordinate system used (Cartesian, Spherical)
-        
+        mass % Total mass of the vehicle
+        mass_fuel % Total mass of fuel onboard the vehicle
+        mass_flowrate % Total mass consumption rate
+        thrust % Total thrust produced by vehicle
     end
     
-    properties(SetAccess=private, Dependent)
-        mass % Total mass of the vehicle
-        fuelmass % Total mass of fuel onboard the vehicle
-        massDot % Total mass consumption rate
-        thrust % Total thrust produced by vehicle
-        
+    properties(SetAccess = private)
+        Thrusters % Access point for thrusters in the vehicle READ ONLY
+        Structures % Access point for structures in the vehicle READ ONLY
     end
+    
+    % % Don't remember why I originally set these to private, so I redefined them
+    % % as public dependent. Leaving this comment in case stuff happens
+    %     properties(SetAccess=private, Dependent)
+    %         mass % Total mass of the vehicle
+    %         mass_fuel % Total mass of fuel onboard the vehicle
+    %         massDot % Total mass consumption rate
+    %         thrust % Total thrust produced by vehicle
+    %
+    %     end
     
     properties(Access = private)
         PrivateUnits = 'Metric';
@@ -40,11 +51,11 @@ classdef Vehicle
     end
     
     properties(Access = private, Constant)
-        ConversionFactors = [.3048,...  % ft/m
+        ConversionFactors = [3.28084,...  % ft/m
             2.20462,... % lbm/kg
             0.224809,... % lbf/N
             1,... % unitless
-            .3048^2,... % ft^2/m^2
+            3.28084^2,... % ft^2/m^2
             ]; % Conversion factors for basic units
         
         UnitConversionIndex = ...,
@@ -61,7 +72,7 @@ classdef Vehicle
     methods
         
         %       Ctor******************************************************
-        function obj = Vehicle(sv,area,cd,CS,Units)
+        function obj = Vehicle(name,sv,area,cd,CS,Units)
             if nargin > 0
                 switch(CS)
                     case 'Cartesian'
@@ -80,9 +91,30 @@ classdef Vehicle
                         error('Vehicle:InvalidUnits',...
                             'Units ''%s'' is not supported', Units);
                 end
-                obj.sv = sv;
-                obj.area = area;
-                obj.cd = cd;
+                if ~ischar(name)
+                    error('Component:InvalidValue',...
+                        'Component name, %s, must be of type char',name);
+                else
+                    obj.name = name;
+                end
+                if ~isequal(size(sv),[1,9])
+                    error('Vehicle:InvalidValue',...
+                        'State vector must be 1x9 vector');
+                else
+                    obj.sv = sv;
+                end
+                if area <= 0
+                    error('Vehicle:InvalidValue',...
+                        'Vehicle area must be positive and nonzero');
+                else
+                    obj.area = area;
+                end
+                if cd < 0
+                    error('Vehicle:InvalidValue',...
+                        'Vehicle drag coefficient must be non-negative');
+                else
+                    obj.cd = cd;
+                end
             end
         end
         %       /Ctor*****************************************************
@@ -96,40 +128,64 @@ classdef Vehicle
             coordinatesystem = obj.PrivateCoordinateSystem;
         end
         
+        function mass_fuel = get.mass_fuel(obj)
+            mass_fuel = 0;
+            for k=keys(obj.(obj.ComponentsList{1})) %ThrustersMap
+                mass_fuel = mass_fuel + obj.(obj.ComponentsList{1})(k{1}).mass_fuel;
+            end
+        end
+        
+        function mass_flowrate = get.mass_flowrate(obj)
+            mass_flowrate = 0;
+            for k=keys(obj.(obj.ComponentsList{1})) %ThrustersMap
+                mass_flowrate = mass_flowrate + obj.(obj.ComponentsList{1})(k{1}).mass_flowrate;
+            end
+        end
+        
         function mass = get.mass(obj)
             mass = 0;
             %sum mass of components
-            for c=obj.ComponentsList'
+            for c=obj.ComponentsList
                 for k=keys(obj.(c{1}))
-                    mass = mass + obj.(c{1})(k{1}).mass;
+                    mass = mass + obj.(c{1})(k{1}).mass();
                 end
             end
         end
         
-        function thruster = thrusters(obj,name)
-            if ~ischar(name)
-                error('Vehicle:InvalidValue',...
-                    'The input value, %s, is not a valid name',name);
-            end
-            if isKey(obj.Thrustersmap,name)
-                thruster = obj.Thrustersmap(name);
-            else
-                error('Vehicle:InvalidComponent',...
-                    'There is no attached thruster named %s', name);
+        function thrust = get.thrust(obj)
+            thrust = 0;
+            for k=keys(obj.(obj.ComponentsList{1})) %ThrustersMap
+                thrust = thrust + obj.(obj.ComponentsList{1})(k{1}).thrust;
             end
         end
         
-        function structure = structures(obj,name)
-            if ~ischar(name)
-                error('Vehicle:InvalidValue',...
-                    'The input value, %s, is not a valid name',name);
-            end
-            if isKey(obj.Structuresmap,name)
-                structure = obj.Structuresmap(name);
-            else
-                error('Vehicle:InvalidComponent',...
-                    'There is no attached structure named %s', name);
-            end
+        
+        function thrusterlist = get.Thrusters(obj)
+            %             if ~ischar(name)
+            %                 error('Vehicle:InvalidValue',...
+            %                     'The input value, %s, is not a valid name',name);
+            %             end
+            %             if isKey(obj.ThrustersMap,name)
+            %                 thruster = obj.ThrustersMap(name);
+            %             else
+            %                 error('Vehicle:InvalidComponent',...
+            %                     'There is no attached thruster named %s', name);
+            %             end
+            thrusterlist = obj.ThrustersMap;
+        end
+        
+        function structurelist = get.Structures(obj)
+            %             if ~ischar(name)
+            %                 error('Vehicle:InvalidValue',...
+            %                     'The input value, %s, is not a valid name',name);
+            %             end
+            %             if isKey(obj.StructuresMap,name)
+            %                 structure = obj.StructuresMap(name);
+            %             else
+            %                 error('Vehicle:InvalidComponent',...
+            %                     'There is no attached structure named %s', name);
+            %             end
+            structurelist = obj.StructuresMap;
         end
         
         %       /Get Functions********************************************
@@ -222,6 +278,123 @@ classdef Vehicle
                     error('Vehicle:Component',...
                         '%s is not a valid component type', componentType);
             end
+        end
+        
+        function fireThruster(obj,name)
+            if ~ischar(name)
+                error('Vehicle:InvalidValue',...
+                    'The input value, %s, is not a valid name',name);
+            end
+            if isKey(obj.ThrustersMap,name)
+                thruster = obj.ThrustersMap(name);
+            else
+                error('Vehicle:InvalidComponent',...
+                    'There is no attached thruster named %s', name);
+            end
+            thruster.state = 1;
+            obj.ThrustersMap(name) = thruster;
+        end
+        
+        function shutoffThruster(obj,name)
+            if ~ischar(name)
+                error('Vehicle:InvalidValue',...
+                    'The input value, %s, is not a valid name',name);
+            end
+            if isKey(obj.ThrustersMap,name)
+                thruster = obj.ThrustersMap(name);
+            else
+                error('Vehicle:InvalidComponent',...
+                    'There is no attached thruster named %s', name);
+            end
+            thruster.state = 0;
+            obj.ThrustersMap(name) = thruster;
+        end
+        
+        function toggleThruster(obj,name)
+            if ~ischar(name)
+                error('Vehicle:InvalidValue',...
+                    'The input value, %s, is not a valid name',name);
+            end
+            if isKey(obj.ThrustersMap,name)
+                thruster = obj.ThrustersMap(name);
+            else
+                error('Vehicle:InvalidComponent',...
+                    'There is no attached thruster named %s', name);
+            end
+            thruster.state = ~thruster.state;
+            obj.ThrustersMap(name) = thruster;
+        end
+        
+        function thrusters = listThrustersOn(obj)
+            thrusters = cell(1,obj.(obj.ComponentsList{1}).Count);
+            i = 1;
+            for k=keys(obj.(obj.ComponentsList{1})) %ThrustersMap
+                if obj.(obj.ComponentsList{1})(k{1}).state
+                    thrusters{i} = obj.(obj.ComponentsList{1})(k{1}).name;
+                    i = i+1;
+                end
+            end
+            thrusters(cellfun('isempty',thrusters)) = [];
+        end
+        
+        function sol = propagate(obj,tspan,varargin)
+            % Propagate the vehicle through space and time
+            
+            % Ensure all thrusters that are on have enough fuel to fire for
+            % the entire time span
+            for t = obj.listThrustersOn
+                tmp = obj.Thrusters(t{1});
+                if tmp.mass_fuel - (tspan(2)-tspan(1))*obj.mass_flowrate <0
+                    error('Vehicle:Thruster',...
+                        ['Thruster "%s" cannot fire for the '...
+                        'duration of time span [%0.1f %0.1f].'],...
+                        tmp.name,tspan(1),tspan(2));
+                end
+            end
+            
+            %ensure we are in spherical coordinates
+            obj.CoordinateSystem = 'Spherical';
+            
+            % define rho, either using standard model or provided value
+            if nargin == 2
+                rho = @(z) stdAtmD(z-6.389e6);
+            elseif nargin == 3
+                rho = @(z) varargin{1};
+            else
+                error('Wrong number of inputs');
+            end
+            
+            % define initial conditions y0
+            % y0 = [position velocity mass]
+            y0 = zeros(3,1);
+            y0(1) = obj.sv(3);
+            y0(2) = obj.sv(6);
+            y0(3) = obj.mass;
+            
+            % define ode45 derivative function
+            % System of equations:
+            %   y1' = y2
+            %   y2' = (1/y3)(T - y3*g*y1 - 0.5*cd*rho(y1)*area*y2^2)
+            %   y3' = mass_flowrate
+            function dy = odefun(~,y,rho,thrust,cd,area,mass_flowrate)
+                dy = zeros(3,1);
+                dy(1) = y(2);
+                dy(2) = (1/y(3))*(thrust ...
+                    - y(3)*g(y(1)) ...
+                    -(y(2)/abs(y(2)+1e-10))*0.5*cd*...
+                    rho(y(1))*area*y(2)^2);
+                dy(3) = -mass_flowrate;
+            end
+            
+            %run ode45 solver with anonymous function call to parameterize
+            %odefun 
+            sol = ode45(@(t,y) odefun(t,y,rho,obj.thrust,...
+                obj.cd,obj.area,obj.mass_flowrate),tspan,y0);
+            
+            %update vehicle state (position, mass)
+%             [y yp] = deval(sol,tspan(2));
+            
+            
         end
         
         %       /Additional Functions*************************************
