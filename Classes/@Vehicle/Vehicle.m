@@ -257,26 +257,31 @@ classdef Vehicle < handle
             end
         end
         function detach(obj,componentType, name)
-            switch(componentType)
-                case 'Thruster'
-                    if isKey(obj.ThrustersMap,name)
-                        remove(obj.ThrustersMap,name);
-                    else
-                        error('Vehicle:InvalidValue',...
-                            'The input value, %s, is not a valid name',name);
-                    end
-                    
-                case 'Structure'
-                    if isKey(obj.StructuresMap,name)
-                        remove(obj.StructuresMap,name);
-                    else
-                        error('Vehicle:InvalidValue',...
-                            'The input value, %s, is not a valid name',name);
-                    end
-                    
-                otherwise
-                    error('Vehicle:Component',...
-                        '%s is not a valid component type', componentType);
+            if nargin == 0
+                %TODO add logic to detach all components
+            else
+                
+                switch(componentType)
+                    case 'Thruster'
+                        if isKey(obj.ThrustersMap,name)
+                            remove(obj.ThrustersMap,name);
+                        else
+                            error('Vehicle:InvalidValue',...
+                                'The input value, %s, is not a valid name',name);
+                        end
+                        
+                    case 'Structure'
+                        if isKey(obj.StructuresMap,name)
+                            remove(obj.StructuresMap,name);
+                        else
+                            error('Vehicle:InvalidValue',...
+                                'The input value, %s, is not a valid name',name);
+                        end
+                        
+                    otherwise
+                        error('Vehicle:Component',...
+                            '%s is not a valid component type', componentType);
+                end
             end
         end
         
@@ -353,12 +358,12 @@ classdef Vehicle < handle
             end
             
             % ensure we are in spherical coordinates
-            tmpCS = obj.CoordinateSystem;
+            tmpCS = obj.CoordinateSystem; %store it to change back later
             obj.CoordinateSystem = 'Spherical';
             
             % define rho, either using standard model or provided value
             if nargin == 2
-                rho = @(z) stdAtmD(z-6.389e6);
+                rho = @(z) stdAtmD(z-6.371e6);
             elseif nargin == 3
                 rho = @(z) varargin{1};
             else
@@ -377,7 +382,7 @@ classdef Vehicle < handle
             %   y1' = y2
             %   y2' = (1/y3)(T - y3*g*y1 - 0.5*cd*rho(y1)*area*y2^2)
             %   y3' = mass_flowrate
-            function dy = odefun(~,y,rho,obj)
+            function dy = odefun(~,y,rho,obj) % This is a nested function
                 dy = zeros(3,1);
                 dy(1) = y(2);
                 dy(2) = (1/y(3))*(obj.thrust ...
@@ -385,27 +390,25 @@ classdef Vehicle < handle
                     -(y(2)/abs(y(2)+1e-10))*0.5*obj.cd*...
                     rho(y(1))*obj.area*y(2)^2);
                 dy(3) = -obj.mass_flowrate;
-                                
             end
             
             % run ode45 solver with anonymous function call to parameterize
             % odefun 
             sol = ode45(@(t,y) odefun(t,y,rho,obj),tspan,y0);
             
-            % update vehicle (state vector, mass)
+            % update vehicle (state vector,mass)
             % sv first
             [y, yp] = deval(sol,tspan(2));
             obj.sv(3) = y(1);
             obj.sv(6) = y(2);
             obj.sv(9) = yp(2);
             % then mass
-            for t = obj.listThrustersOn
-                tmp = obj.Thrusters(t{1});
-                tmp.mass_fuel = tmp.mass_fuel ...
-                                -(tspan(2)-tspan(1))*tmp.mass_flowrate;
-                obj.Thrusters(t{1}) = tmp;
+            for k = obj.listThrustersOn
+                tmp = obj.Thrusters(k{1});
+                tmp.mass_fuel = tmp.mass_fuel-(tspan(2)-tspan(1))*tmp.mass_flowrate;
+                obj.Thrusters(k{1}) = tmp;
             end
-            
+                        
             %convert to original coordinate system
             obj.CoordinateSystem = tmpCS;
         end
