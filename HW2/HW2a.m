@@ -28,7 +28,7 @@
 % following system of equations:
 %
 % $$r'' = (Thrust - m*g0*R0^2/r^2 -(r'/abs(r'))*(0.5*Cd*rho*A*r'^2))/m$$
-% $$m' = \sum(m'_{fired-thrusters})
+% $$m' = \sum(m'_{fired-thrusters})$$
 %
 % For easier use, the system of equations is rewritten as a system of
 % purely first order equations, as follows:
@@ -39,7 +39,7 @@
 %
 % $$y'_3 = \sum(m'_{fired-thrusters})$$
 % 
-% Where $$y_1$$ is position, $$y_2$$ is velocity, and $$y_3$$ is mass
+% Where $$y_1$ is position, $$y_2$ is velocity, and $$y_3$ is mass
 %
 %% Problem Setup
 % A custom matlab class named "Vehicle" is used to encapsulate vehicle
@@ -214,7 +214,7 @@ for c = m(1:4)
     yp5{i} = [yp5_1 yp5_2 yp5_3 yp5_4]; % combine the time span results
     i = i+1;
 end
-tspanCoastFat = [9 22];
+tspanCoastFat = [9 22]; %this is a useless variable,same as tspancoast
 for c = m(5:end)
     r.attach(main); % reset main thruster
     r.attach(mp1); % reset monoprops
@@ -235,14 +235,136 @@ end
 
 
 %% Case 1-3 Analysis
+% Case 1, with a constant value for density (1.2 kg/m3) slightly
+% underperformed Case 2, which had density as a function of height.  This
+% is due to density quickly diverging from Case 1's constant value as the
+% rocket ascended to apogee.  This shows up again in the velocity graph, as
+% case 2 maintains a slightly higher velocity over time.  Case 3 stands
+% out, as the addition of monopropellant boosters give a clear boost in
+% altitude. A small (but noticeable) increase in acceleration can be
+% observed at t+1, when the monoprops fire, as well as a correspondign drop
+% in accleration at t+9 when they stop.
 
 % plot position
-plot(xint(y1{1}(2,:)>=0),y1{1}(1,y1{1}(2,:)>=0)-R0);
-hold on;
-plot(xint(y2{1}(2,:)>=0),y2{1}(1,y2{1}(2,:)>=0)-R0);
-plot(xint(y3{1}(2,:)>=0),y3{1}(1,y3{1}(2,:)>=0)-R0);
+figure(1)
+x1 = xint(y1{1}(2,:)>=0);
+pos1 = y1{1}(1,y1{1}(2,:)>=0)-R0;
+x2 = xint(y2{1}(2,:)>=0);
+pos2 = y2{1}(1,y2{1}(2,:)>=0)-R0;
+x3 = xint(y3{1}(2,:)>=0);
+pos3 = y3{1}(1,y3{1}(2,:)>=0)-R0;
 
+plot(x1,pos1,x2,pos2,x3,pos3);
+ylabel('Position (m)');
+xlabel('Time (s)');
+legend('Case 1', 'Case 2', 'Case 3', 'Location', 'SouthEast');
+
+% plot velocity
+figure(2)
+vel1 = y1{1}(2,y1{1}(2,:)>=0);
+vel2 = y2{1}(2,y2{1}(2,:)>=0);
+vel3 = y3{1}(2,y3{1}(2,:)>=0);
+
+plot(x1,vel1,x2,vel2,x3,vel3);
+ylabel('Velocity (m/s)');
+xlabel('Time (s)');
+legend('Case 1', 'Case 2', 'Case 3');
+
+%plot acceleration
+figure(3)
+acc1 = yp1{1}(2,y1{1}(2,:)>=0);
+acc2 = yp2{1}(2,y2{1}(2,:)>=0);
+acc3 = yp3{1}(2,y3{1}(2,:)>=0);
+
+plot(x1,acc1,x2,acc2,x3,acc3);
+ylabel('Acceleration (m/s2)');
+xlabel('Time (s)');
+legend('Case 1', 'Case 2', 'Case 3');
 
 %% Case 4 Analysis
+% Case 4 looks at the effect of varying the drag coefficient.  As can be
+% seen in the altitude plot, a change of nearly 250 meters is evident
+% between the minimum cd (0.4) and the maximum cd (0.6).  
+
+% plot position
+figure(4);
+hold on;
+legendval = cell(1,length(cd)+2);
+cm = jet(length(cd));
+for i=1:1:length(cd)
+    plot(xint(y4{i}(2,:)>=0), y4{i}(1,y4{i}(2,:)>=0)-R0, 'color', cm(i,:));
+    legendval{i} = ['Cd = ' num2str(cd(i))];
+end
+legendval{end-1} = 'Location';
+legendval{end} = 'SouthEast';
+ylabel('Position (m)');
+xlabel('Time (s)');
+legend(legendval{:});
+
+% plot velocity
+figure(5);
+hold on;
+legendval = legendval(1:end-2);
+for i=1:1:length(cd)
+    plot(xint(y4{i}(2,:)>=0), y4{i}(2,y4{i}(2,:)>=0), 'color', cm(i,:));
+    legendval{i} = ['Cd = ' num2str(cd(i))];
+end
+ylabel('Velocity (m/s)');
+xlabel('Time (s)');
+legend(legendval{:});
+
+% plot acceleration
+figure(6);
+hold on;
+for i=1:1:length(cd)
+    plot(xint(y4{i}(2,:)>=0), yp4{i}(2,y4{i}(2,:)>=0), 'color', cm(i,:));
+    legendval{i} = ['Cd = ' num2str(cd(i))];
+end
+ylabel('Acceleration');
+xlabel('Time (s)');
+legend(legendval{:});
 
 %% Case 5 Analysis
+% Case 5 looks at the effect of varying the rocket's dry mass.  Please note
+% that the dry mass does not include the mass of the monoprops fuel, hence
+% the values that are 0.16kg less than the specified range of 14:0.25:16. A
+% change of apogee of ~225 meters is evident between the maximum and
+% minimum mass. 
+
+% plot position
+figure(7);
+hold on;
+legendval = cell(1,length(m)+2);
+cm = jet(length(m));
+for i=1:1:length(m)
+    plot(xint(y5{i}(2,:)>=0), y5{i}(1,y5{i}(2,:)>=0)-R0, 'color', cm(i,:));
+    legendval{i} = ['Mass = ' num2str(m(i))];
+end
+legendval{end-1} = 'Location';
+legendval{end} = 'SouthEast';
+ylabel('Position (m)');
+xlabel('Time (s)');
+legend(legendval{:});
+
+% plot velocity
+figure(8);
+hold on;
+legendval = legendval(1:end-2);
+for i=1:1:length(m)
+    plot(xint(y5{i}(2,:)>=0), y5{i}(2,y5{i}(2,:)>=0), 'color', cm(i,:));
+    legendval{i} = ['Mass = ' num2str(m(i))];
+end
+ylabel('Velocity (m/s)');
+xlabel('Time (s)');
+legend(legendval{:});
+
+% plot acceleration
+figure(9);
+hold on;
+for i=1:1:length(m)
+    plot(xint(y5{i}(2,:)>=0), yp5{i}(2,y5{i}(2,:)>=0), 'color', cm(i,:));
+    legendval{i} = ['Mass = ' num2str(m(i))];
+end
+ylabel('Acceleration');
+xlabel('Time (s)');
+legend(legendval{:});
