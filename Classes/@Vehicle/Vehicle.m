@@ -31,17 +31,7 @@ classdef Vehicle < handle
         Thrusters % Access point for thrusters in the vehicle READ ONLY
         Structures % Access point for structures in the vehicle READ ONLY
     end
-    
-    % % Don't remember why I originally set these to private, so I redefined them
-    % % as public dependent. Leaving this comment in case stuff happens
-    %     properties(SetAccess=private, Dependent)
-    %         mass % Total mass of the vehicle
-    %         mass_fuel % Total mass of fuel onboard the vehicle
-    %         massDot % Total mass consumption rate
-    %         thrust % Total thrust produced by vehicle
-    %
-    %     end
-    
+       
     properties(Access = private)
         PrivateUnits = 'Metric';
         PrivateCoordinateSystem = 'Cartesian';
