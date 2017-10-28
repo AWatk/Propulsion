@@ -27,7 +27,7 @@ function alt_geometric = getGeometricAlt(altitude)
 % See also GETGEOMETRICALT_ENGLISH
 
 %Define earth's mean radius (NASA standard)
-r = 6.371e6;  %meters
+r = R0;  %meters
 
 %calculate geometric height
 alt_geometric = -(r*altitude)/(altitude-r);

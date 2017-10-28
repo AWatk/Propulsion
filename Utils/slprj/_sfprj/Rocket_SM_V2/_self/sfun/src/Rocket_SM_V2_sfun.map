@@ -1,0 +1,582 @@
+ Rocket_SM_V2_sfun
+
+ Timestamp is 572a8707 (Wed May 04 18:34:31 2016)
+
+ Preferred load address is 0000000180000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00015ad4H .text                   CODE
+ 0001:00015ae0 00000092H .text$x                 CODE
+ 0002:00000000 00000488H .idata$5                DATA
+ 0002:00000488 00000008H .CRT$XCA                DATA
+ 0002:00000490 00000008H .CRT$XCZ                DATA
+ 0002:00000498 00000008H .CRT$XIA                DATA
+ 0002:000004a0 00000008H .CRT$XIAA               DATA
+ 0002:000004a8 00000008H .CRT$XIZ                DATA
+ 0002:000004b0 00000694H .rdata                  DATA
+ 0002:00000b48 00000008H .rtc$IAA                DATA
+ 0002:00000b50 00000008H .rtc$IZZ                DATA
+ 0002:00000b58 00000008H .rtc$TAA                DATA
+ 0002:00000b60 00000008H .rtc$TZZ                DATA
+ 0002:00000b68 000006b0H .xdata                  DATA
+ 0002:00001218 00000078H .idata$2                DATA
+ 0002:00001290 00000014H .idata$3                DATA
+ 0002:000012a8 00000488H .idata$4                DATA
+ 0002:00001730 00000cecH .idata$6                DATA
+ 0002:00002420 00000057H .edata                  DATA
+ 0003:00000000 00001d48H .data                   DATA
+ 0003:00001d50 000006b8H .bss                    DATA
+ 0004:00000000 00000834H .pdata                  DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
+ 0000:00000000       __ImageBase                0000000180000000     <linker-defined>
+ 0001:00000000       Rocket_SM_V2_initializer   0000000180001000 f   Rocket_SM_V2_sfun.obj
+ 0001:00000010       Rocket_SM_V2_terminator    0000000180001010 f   Rocket_SM_V2_sfun.obj
+ 0001:00000020       sf_Rocket_SM_V2_method_dispatcher 0000000180001020 f   Rocket_SM_V2_sfun.obj
+ 0001:00000070       sf_Rocket_SM_V2_process_check_sum_call 0000000180001070 f   Rocket_SM_V2_sfun.obj
+ 0001:00000480       sf_Rocket_SM_V2_autoinheritance_info 0000000180001480 f   Rocket_SM_V2_sfun.obj
+ 0001:000005f0       sf_Rocket_SM_V2_get_eml_resolved_functions_info 00000001800015f0 f   Rocket_SM_V2_sfun.obj
+ 0001:00000720       sf_Rocket_SM_V2_third_party_uses_info 0000000180001720 f   Rocket_SM_V2_sfun.obj
+ 0001:00000870       sf_Rocket_SM_V2_updateBuildInfo_args_info 0000000180001870 f   Rocket_SM_V2_sfun.obj
+ 0001:000009c0       Rocket_SM_V2_debug_initialize 00000001800019c0 f   Rocket_SM_V2_sfun.obj
+ 0001:00000a40       Rocket_SM_V2_register_exported_symbols 0000000180001a40 f   Rocket_SM_V2_sfun.obj
+ 0001:00000a50       load_Rocket_SM_V2_optimization_info 0000000180001a50 f   Rocket_SM_V2_sfun.obj
+ 0001:00000aa0       unload_Rocket_SM_V2_optimization_info 0000000180001aa0 f   Rocket_SM_V2_sfun.obj
+ 0001:00000ad0       sf_c3_Rocket_SM_V2_get_eml_resolved_functions_info 0000000180001ad0 f   c3_Rocket_SM_V2.obj
+ 0001:00000b50       sf_c3_Rocket_SM_V2_get_check_sum 0000000180001b50 f   c3_Rocket_SM_V2.obj
+ 0001:00000bd0       sf_c3_Rocket_SM_V2_get_autoinheritance_info 0000000180001bd0 f   c3_Rocket_SM_V2.obj
+ 0001:00001b70       sf_c3_Rocket_SM_V2_third_party_uses_info 0000000180002b70 f   c3_Rocket_SM_V2.obj
+ 0001:00001ba0       sf_c3_Rocket_SM_V2_updateBuildInfo_args_info 0000000180002ba0 f   c3_Rocket_SM_V2.obj
+ 0001:00001bd0       sf_internal_get_sim_state_c3_Rocket_SM_V2 0000000180002bd0 f   c3_Rocket_SM_V2.obj
+ 0001:000022b0       sf_internal_set_sim_state_c3_Rocket_SM_V2 00000001800032b0 f   c3_Rocket_SM_V2.obj
+ 0001:000030f0       c3_Rocket_SM_V2_method_dispatcher 00000001800040f0 f   c3_Rocket_SM_V2.obj
+ 0001:0000e980       sf_process_check_sum_call  000000018000f980 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000e9d0       sf_process_autoinheritance_call 000000018000f9d0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000eb70       sf_process_get_third_party_uses_info_call 000000018000fb70 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000ed10       sf_process_get_updateBuildInfo_args_info_call 000000018000fd10 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000eeb0       sf_process_get_eml_resolved_functions_info_call 000000018000feb0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f030       sf_mex_unlock_call         0000000180010030 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f0e0       sf_machine_global_initializer_called 00000001800100e0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f110       sf_machine_global_method_dispatcher 0000000180010110 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f170       sf_machine_global_terminator 0000000180010170 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f1c0       sf_register_machine_exported_symbols 00000001800101c0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f1e0       callCustomFcn              00000001800101e0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f1f0       sf_machine_global_initializer 00000001800101f0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f270       mdlGetSimState             0000000180010270 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f2f0       mdlSetSimState             00000001800102f0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f330       _ssSetStateAbsTol          0000000180010330 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f410       _ssGetAbsTol               0000000180010410 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f480       _ssSetInputPortMatrixDimensions 0000000180010480 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f590       _ssSetOutputPortMatrixDimensions 0000000180010590 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f6a0       _ssSetInputPortVectorDimension 00000001800106a0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f770       _ssSetOutputPortVectorDimension 0000000180010770 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f840       ssIsRunTimeParamTunable    0000000180010840 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f8b0       ssGetSFuncBlockHandle      00000001800108b0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000f920       _ssGetCurrentInputPortWidth 0000000180010920 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fa40       _ssGetCurrentOutputPortWidth 0000000180010a40 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fb60       _ssGetCallSystemNumFcnCallDestinations 0000000180010b60 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fbd0       ssWarning                  0000000180010bd0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fce0       ssGetIsZeroCrossControlDisabled 0000000180010ce0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fd50       ssSetIsInputPortUsedForContZcSignal 0000000180010d50 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fdc0       ssSetZcSignalIsZcElementDisc 0000000180010dc0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fe70       ssSetZcSignalName          0000000180010e70 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000fee0       ssSetZcSignalWidth         0000000180010ee0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000ff50       ssSetZcSignalZcEventType   0000000180010f50 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:0000ffc0       ssSetZcSignalType          0000000180010fc0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010030       ssSetZcSignalZcTol         0000000180011030 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000100a0       ssSetZcSignalNeedsEventNotification 00000001800110a0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010110       ssCreateAndAddZcSignalInfo 0000000180011110 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010180       ssCloneAndAddZcSignalInfo  0000000180011180 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000101f0       ssGetNumZcSignals          00000001800111f0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010260       ssGetZcSignalVector        0000000180011260 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000102d0       ssGetZcSignalZcEvents      00000001800112d0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010340       ssGetZcSignalName          0000000180011340 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000103b0       ssGetZcSignalWidth         00000001800113b0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010420       ssGetZcSignalZcEventType   0000000180011420 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010490       ssGetZcSignalType          0000000180011490 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010500       ssGetZcSignalZcTol         0000000180011500 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010580       ssGetZcSignalNeedsEventNotification 0000000180011580 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000105f0       ssGetZcSignalIsZcElementDisc 00000001800115f0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010690       ssGetIsInputPortElementContinuous 0000000180011690 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010730       _ssGetInputPortSignalPtrsFcn 0000000180011730 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000109f0       _ssGetInputPortSignalFcn   00000001800119f0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010c10       _ssSetInputPortDirectFeedThroughFcn 0000000180011c10 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010d70       _ssSetInputPortReusableFcn 0000000180011d70 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010e60       _ssSetOutputPortReusableFcn 0000000180011e60 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010f40       ssGetDTypeIdFromMxArray    0000000180011f40 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00011060       ssWriteRTWStr              0000000180012060 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000110c0       ssWriteRTWMxVectParam      00000001800120c0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00011120       ssWriteRTWMx2dMatParam     0000000180012120 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000111a0       ssWriteRTWNameValuePair    00000001800121a0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00011690       ssWriteRTWParameters       0000000180012690 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00011c90       ssWriteRTWParamSettings    0000000180012c90 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00012360       ssWriteRTWWorkVect         0000000180013360 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00012860       mexFunction                0000000180013860 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014ce0       ProcessMexSfunctionEveryCall 0000000180015ce0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014e62       sf_debug_set_machine_data_thresholds 0000000180015e62 f   sf_runtime:sf_runtime.dll
+ 0001:00014e68       sf_debug_set_machine_event_thresholds 0000000180015e68 f   sf_runtime:sf_runtime.dll
+ 0001:00014e6e       sf_debug_initialize_machine 0000000180015e6e f   sf_runtime:sf_runtime.dll
+ 0001:00014e74       sf_load_rtw_optimization_info 0000000180015e74 f   sf_runtime:sf_runtime.dll
+ 0001:00014e7a       sf_mex_assign              0000000180015e7a f   sf_runtime:sf_runtime.dll
+ 0001:00014e80       sf_mex_create              0000000180015e80 f   sf_runtime:sf_runtime.dll
+ 0001:00014e86       sf_mex_error_message       0000000180015e86 f   sf_runtime:sf_runtime.dll
+ 0001:00014e8c       sf_mex_call_matlab         0000000180015e8c f   sf_runtime:sf_runtime.dll
+ 0001:00014e92       sf_mex_setcell             0000000180015e92 f   sf_runtime:sf_runtime.dll
+ 0001:00014e98       sf_mex_createcellmatrix    0000000180015e98 f   sf_runtime:sf_runtime.dll
+ 0001:00014e9e       sf_mex_decode_encoded_mx_struct_array 0000000180015e9e f   sf_runtime:sf_runtime.dll
+ 0001:00014ea4       sf_mex_destroy             0000000180015ea4 f   sf_runtime:sf_runtime.dll
+ 0001:00014eaa       sf_mex_getcell             0000000180015eaa f   sf_runtime:sf_runtime.dll
+ 0001:00014eb0       sf_mex_dup                 0000000180015eb0 f   sf_runtime:sf_runtime.dll
+ 0001:00014eb6       sf_debug_animate           0000000180015eb6 f   sf_runtime:sf_runtime.dll
+ 0001:00014ebc       sf_debug_call              0000000180015ebc f   sf_runtime:sf_runtime.dll
+ 0001:00014ec2       sf_debug_set_honor_breakpoints 0000000180015ec2 f   sf_runtime:sf_runtime.dll
+ 0001:00014ec8       sf_debug_set_animation     0000000180015ec8 f   sf_runtime:sf_runtime.dll
+ 0001:00014ece       sf_debug_get_animation     0000000180015ece f   sf_runtime:sf_runtime.dll
+ 0001:00014ed4       sf_mex_import              0000000180015ed4 f   sf_runtime:sf_runtime.dll
+ 0001:00014eda       sf_mex_duplicatearraysafe  0000000180015eda f   sf_runtime:sf_runtime.dll
+ 0001:00014ee0       sf_set_rtw_dwork_info      0000000180015ee0 f   sf_runtime:sf_runtime.dll
+ 0001:00014ee6       sf_mark_chart_reusable_outputs 0000000180015ee6 f   sf_runtime:sf_runtime.dll
+ 0001:00014eec       sf_mark_chart_expressionable_inputs 0000000180015eec f   sf_runtime:sf_runtime.dll
+ 0001:00014ef2       sf_mark_output_events_with_multiple_callers 0000000180015ef2 f   sf_runtime:sf_runtime.dll
+ 0001:00014ef8       sf_update_buildInfo        0000000180015ef8 f   sf_runtime:sf_runtime.dll
+ 0001:00014efe       sf_rtw_info_uint_prop      0000000180015efe f   sf_runtime:sf_runtime.dll
+ 0001:00014f04       sf_is_chart_inlinable      0000000180015f04 f   sf_runtime:sf_runtime.dll
+ 0001:00014f0a       sim_mode_is_external       0000000180015f0a f   sf_runtime:sf_runtime.dll
+ 0001:00014f10       sim_mode_is_rtw_gen        0000000180015f10 f   sf_runtime:sf_runtime.dll
+ 0001:00014f16       sf_debug_reset_current_state_configuration 0000000180015f16 f   sf_runtime:sf_runtime.dll
+ 0001:00014f1c       sf_debug_set_instance_data_value_ptr 0000000180015f1c f   sf_runtime:sf_runtime.dll
+ 0001:00014f22       sf_debug_set_chart_data_compiled_props 0000000180015f22 f   sf_runtime:sf_runtime.dll
+ 0001:00014f28       cv_eml_init_if             0000000180015f28 f   sf_runtime:sf_runtime.dll
+ 0001:00014f2e       cv_eml_init_script         0000000180015f2e f   sf_runtime:sf_runtime.dll
+ 0001:00014f34       sf_debug_cv_init_trans     0000000180015f34 f   sf_runtime:sf_runtime.dll
+ 0001:00014f3a       sf_debug_cv_init_state     0000000180015f3a f   sf_runtime:sf_runtime.dll
+ 0001:00014f40       sf_debug_cv_init_chart     0000000180015f40 f   sf_runtime:sf_runtime.dll
+ 0001:00014f46       sf_debug_set_chart_state_substate_count 0000000180015f46 f   sf_runtime:sf_runtime.dll
+ 0001:00014f4c       sf_debug_set_chart_substate_index 0000000180015f4c f   sf_runtime:sf_runtime.dll
+ 0001:00014f52       sf_debug_set_chart_decomposition 0000000180015f52 f   sf_runtime:sf_runtime.dll
+ 0001:00014f58       sf_debug_set_chart_substate_count 0000000180015f58 f   sf_runtime:sf_runtime.dll
+ 0001:00014f5e       sf_debug_set_chart_state_info 0000000180015f5e f   sf_runtime:sf_runtime.dll
+ 0001:00014f64       sf_debug_set_chart_data_props 0000000180015f64 f   sf_runtime:sf_runtime.dll
+ 0001:00014f6a       sf_debug_set_chart_event_thresholds 0000000180015f6a f   sf_runtime:sf_runtime.dll
+ 0001:00014f70       sf_debug_set_chart_disable_implicit_casting 0000000180015f70 f   sf_runtime:sf_runtime.dll
+ 0001:00014f76       sf_debug_initialize_chart  0000000180015f76 f   sf_runtime:sf_runtime.dll
+ 0001:00014f7c       sf_get_time                0000000180015f7c f   sf_runtime:sf_runtime.dll
+ 0001:00014f82       sf_call_output_fcn_enable  0000000180015f82 f   sf_runtime:sf_runtime.dll
+ 0001:00014f88       sf_call_output_fcn_disable 0000000180015f88 f   sf_runtime:sf_runtime.dll
+ 0001:00014f8e       sf_debug_check_for_state_inconsistency 0000000180015f8e f   sf_runtime:sf_runtime.dll
+ 0001:00014f94       sf_debug_symbol_scope_pop  0000000180015f94 f   sf_runtime:sf_runtime.dll
+ 0001:00014f9a       sf_debug_data_range_wrapper 0000000180015f9a f   sf_runtime:sf_runtime.dll
+ 0001:00014fa0       sf_debug_symbol_scope_push 0000000180015fa0 f   sf_runtime:sf_runtime.dll
+ 0001:00014fa6       sf_mex_sub                 0000000180015fa6 f   sf_runtime:sf_runtime.dll
+ 0001:00014fac       sf_mex_call_debug          0000000180015fac f   sf_runtime:sf_runtime.dll
+ 0001:00014fb2       sf_mex_printf              0000000180015fb2 f   sf_runtime:sf_runtime.dll
+ 0001:00014fb8       cv_eml_eval                0000000180015fb8 f   sf_runtime:sf_runtime.dll
+ 0001:00014fbe       cv_eval_point              0000000180015fbe f   sf_runtime:sf_runtime.dll
+ 0001:00014fc4       sf_debug_symbol_scope_add_eml_importable 0000000180015fc4 f   sf_runtime:sf_runtime.dll
+ 0001:00014fca       sf_debug_symbol_scope_push_eml 0000000180015fca f   sf_runtime:sf_runtime.dll
+ 0001:00014fd0       sf_debug_unset_instance_data_value_ptr 0000000180015fd0 f   sf_runtime:sf_runtime.dll
+ 0001:00014fd6       sf_call_output_fcn_call    0000000180015fd6 f   sf_runtime:sf_runtime.dll
+ 0001:00014fdc       sf_debug_symbol_scope_add_importable 0000000180015fdc f   sf_runtime:sf_runtime.dll
+ 0001:00014fe2       sf_debug_eml_data_array_bounds_error_check 0000000180015fe2 f   sf_runtime:sf_runtime.dll
+ 0001:00014fe8       sf_debug_read_before_write_check 0000000180015fe8 f   sf_runtime:sf_runtime.dll
+ 0001:00014fee       sf_clear_rtw_identifier    0000000180015fee f   sf_runtime:sf_runtime.dll
+ 0001:00014ff4       sf_debug_terminate         0000000180015ff4 f   sf_runtime:sf_runtime.dll
+ 0001:00014ffa       sf_debug_create_debug_instance_struct 0000000180015ffa f   sf_runtime:sf_runtime.dll
+ 0001:00015000       sf_debug_api               0000000180016000 f   sf_runtime:sf_runtime.dll
+ 0001:00015006       callMdlMethodAndReportError 0000000180016006 f   sf_runtime:sf_runtime.dll
+ 0001:0001500c       call_sf_machine_global_method_dispatcher 000000018001600c f   sf_runtime:sf_runtime.dll
+ 0001:00015012       sf_clear_error_manager_info 0000000180016012 f   sf_runtime:sf_runtime.dll
+ 0001:00015018       sf_mex_error_direct_call   0000000180016018 f   sf_runtime:sf_runtime.dll
+ 0001:0001501e       mxGetScalar                000000018001601e f   libmx:libmx.dll
+ 0001:00015024       mxGetPr                    0000000180016024 f   libmx:libmx.dll
+ 0001:0001502a       mxCreateDoubleMatrix_730   000000018001602a f   libmx:libmx.dll
+ 0001:00015030       mxGetString_730            0000000180016030 f   libmx:libmx.dll
+ 0001:00015036       mxIsChar                   0000000180016036 f   libmx:libmx.dll
+ 0001:0001503c       mxDestroyArray             000000018001603c f   libmx:libmx.dll
+ 0001:00015042       mxDuplicateArray           0000000180016042 f   libmx:libmx.dll
+ 0001:00015048       mxCreateDoubleScalar       0000000180016048 f   libmx:libmx.dll
+ 0001:0001504e       mxSetField_730             000000018001604e f   libmx:libmx.dll
+ 0001:00015054       mxCreateString             0000000180016054 f   libmx:libmx.dll
+ 0001:0001505a       mxCreateStructMatrix_730   000000018001605a f   libmx:libmx.dll
+ 0001:00015060       mxCreateCellMatrix_730     0000000180016060 f   libmx:libmx.dll
+ 0001:00015066       mxGetClassID               0000000180016066 f   libmx:libmx.dll
+ 0001:0001506c       mxIsNumeric                000000018001606c f   libmx:libmx.dll
+ 0001:00015072       mxIsComplex                0000000180016072 f   libmx:libmx.dll
+ 0001:00015078       mxGetN                     0000000180016078 f   libmx:libmx.dll
+ 0001:0001507e       mxGetM                     000000018001607e f   libmx:libmx.dll
+ 0001:00015084       mxCalloc                   0000000180016084 f   libmx:libmx.dll
+ 0001:0001508a       mexMakeArrayPersistent     000000018001608a f   libmex:libmex.dll
+ 0001:00015090       mexUnlock                  0000000180016090 f   libmex:libmex.dll
+ 0001:00015096       mexIsLocked                0000000180016096 f   libmex:libmex.dll
+ 0001:0001509c       mexWarnMsgTxt              000000018001609c f   libmex:libmex.dll
+ 0001:000150a2       mexCallMATLAB              00000001800160a2 f   libmex:libmex.dll
+ 0001:000150a8       mexErrMsgTxt               00000001800160a8 f   libmex:libmex.dll
+ 0001:000150ae       mexLock                    00000001800160ae f   libmex:libmex.dll
+ 0001:000150b4       utMalloc                   00000001800160b4 f   libut:libut.dll
+ 0001:000150ba       utFree                     00000001800160ba f   libut:libut.dll
+ 0001:000150c0       __GSHandlerCheckCommon     00000001800160c0 f   MSVCRT:gshandler.obj
+ 0001:00015124       __GSHandlerCheck           0000000180016124 f   MSVCRT:gshandler.obj
+ 0001:00015142       strcmp                     0000000180016142 f   MSVCRT:MSVCR100.dll
+ 0001:00015160       __security_check_cookie    0000000180016160 f   MSVCRT:amdsecgs.obj
+ 0001:00015180       memset                     0000000180016180 f   MSVCRT:MSVCR100.dll
+ 0001:00015186       free                       0000000180016186 f   MSVCRT:MSVCR100.dll
+ 0001:0001518c       sprintf                    000000018001618c f   MSVCRT:MSVCR100.dll
+ 0001:00015192       malloc                     0000000180016192 f   MSVCRT:MSVCR100.dll
+ 0001:00015198       strlen                     0000000180016198 f   MSVCRT:MSVCR100.dll
+ 0001:0001519e       strcat                     000000018001619e f   MSVCRT:MSVCR100.dll
+ 0001:000151a4       memcpy                     00000001800161a4 f   MSVCRT:MSVCR100.dll
+ 0001:000151ac       NtCurrentTeb               00000001800161ac f i MSVCRT:crtdll.obj
+ 0001:00015218       _CRT_INIT                  0000000180016218 f   MSVCRT:crtdll.obj
+ 0001:000155b0       _DllMainCRTStartup         00000001800165b0 f   MSVCRT:crtdll.obj
+ 0001:000155f0       __report_gsfailure         00000001800165f0 f   MSVCRT:gs_report.obj
+ 0001:0001573c       __clean_type_info_names    000000018001673c f   MSVCRT:tncleanup.obj
+ 0001:00015748       _onexit                    0000000180016748 f   MSVCRT:atonexit.obj
+ 0001:000157f8       atexit                     00000001800167f8 f   MSVCRT:atonexit.obj
+ 0001:00015810       _RTC_Initialize            0000000180016810 f   MSVCRT:_initsect_.obj
+ 0001:00015848       _RTC_Terminate             0000000180016848 f   MSVCRT:_initsect_.obj
+ 0001:00015880       _malloc_crt                0000000180016880 f   MSVCRT:MSVCR100.dll
+ 0001:00015890       _ValidateImageBase         0000000180016890 f   MSVCRT:pesect.obj
+ 0001:000158c0       _FindPESection             00000001800168c0 f   MSVCRT:pesect.obj
+ 0001:00015910       _IsNonwritableInCurrentImage 0000000180016910 f   MSVCRT:pesect.obj
+ 0001:00015952       _initterm                  0000000180016952 f   MSVCRT:MSVCR100.dll
+ 0001:00015958       _initterm_e                0000000180016958 f   MSVCRT:MSVCR100.dll
+ 0001:0001595e       _encoded_null              000000018001695e f   MSVCRT:MSVCR100.dll
+ 0001:00015964       _amsg_exit                 0000000180016964 f   MSVCRT:MSVCR100.dll
+ 0001:0001596a       __C_specific_handler       000000018001696a f   MSVCRT:MSVCR100.dll
+ 0001:00015970       __CppXcptFilter            0000000180016970 f   MSVCRT:MSVCR100.dll
+ 0001:00015978       DllMain                    0000000180016978 f   MSVCRT:dllmain.obj
+ 0001:0001599c       __security_init_cookie     000000018001699c f   MSVCRT:gs_support.obj
+ 0001:00015a50       __crt_debugger_hook        0000000180016a50 f   MSVCRT:MSVCR100.dll
+ 0001:00015a56       __clean_type_info_names_internal 0000000180016a56 f   MSVCRT:MSVCR100.dll
+ 0001:00015a5c       _unlock                    0000000180016a5c f   MSVCRT:MSVCR100.dll
+ 0001:00015a62       __dllonexit                0000000180016a62 f   MSVCRT:MSVCR100.dll
+ 0001:00015a68       _lock                      0000000180016a68 f   MSVCRT:MSVCR100.dll
+ 0001:00015a6e       EncodePointer              0000000180016a6e f   kernel32:KERNEL32.dll
+ 0001:00015a74       DecodePointer              0000000180016a74 f   kernel32:KERNEL32.dll
+ 0001:00015a7a       Sleep                      0000000180016a7a f   kernel32:KERNEL32.dll
+ 0001:00015a80       TerminateProcess           0000000180016a80 f   kernel32:KERNEL32.dll
+ 0001:00015a86       GetCurrentProcess          0000000180016a86 f   kernel32:KERNEL32.dll
+ 0001:00015a8c       UnhandledExceptionFilter   0000000180016a8c f   kernel32:KERNEL32.dll
+ 0001:00015a92       SetUnhandledExceptionFilter 0000000180016a92 f   kernel32:KERNEL32.dll
+ 0001:00015a98       IsDebuggerPresent          0000000180016a98 f   kernel32:KERNEL32.dll
+ 0001:00015a9e       RtlVirtualUnwind           0000000180016a9e f   kernel32:KERNEL32.dll
+ 0001:00015aa4       RtlLookupFunctionEntry     0000000180016aa4 f   kernel32:KERNEL32.dll
+ 0001:00015aaa       RtlCaptureContext          0000000180016aaa f   kernel32:KERNEL32.dll
+ 0001:00015ab0       DisableThreadLibraryCalls  0000000180016ab0 f   kernel32:KERNEL32.dll
+ 0001:00015ab6       QueryPerformanceCounter    0000000180016ab6 f   kernel32:KERNEL32.dll
+ 0001:00015abc       GetTickCount               0000000180016abc f   kernel32:KERNEL32.dll
+ 0001:00015ac2       GetCurrentThreadId         0000000180016ac2 f   kernel32:KERNEL32.dll
+ 0001:00015ac8       GetCurrentProcessId        0000000180016ac8 f   kernel32:KERNEL32.dll
+ 0001:00015ace       GetSystemTimeAsFileTime    0000000180016ace f   kernel32:KERNEL32.dll
+ 0002:00000000       __imp_GetCurrentProcessId  0000000180017000     kernel32:KERNEL32.dll
+ 0002:00000008       __imp_GetCurrentThreadId   0000000180017008     kernel32:KERNEL32.dll
+ 0002:00000010       __imp_GetTickCount         0000000180017010     kernel32:KERNEL32.dll
+ 0002:00000018       __imp_QueryPerformanceCounter 0000000180017018     kernel32:KERNEL32.dll
+ 0002:00000020       __imp_DisableThreadLibraryCalls 0000000180017020     kernel32:KERNEL32.dll
+ 0002:00000028       __imp_RtlCaptureContext    0000000180017028     kernel32:KERNEL32.dll
+ 0002:00000030       __imp_RtlLookupFunctionEntry 0000000180017030     kernel32:KERNEL32.dll
+ 0002:00000038       __imp_RtlVirtualUnwind     0000000180017038     kernel32:KERNEL32.dll
+ 0002:00000040       __imp_IsDebuggerPresent    0000000180017040     kernel32:KERNEL32.dll
+ 0002:00000048       __imp_SetUnhandledExceptionFilter 0000000180017048     kernel32:KERNEL32.dll
+ 0002:00000050       __imp_UnhandledExceptionFilter 0000000180017050     kernel32:KERNEL32.dll
+ 0002:00000058       __imp_GetCurrentProcess    0000000180017058     kernel32:KERNEL32.dll
+ 0002:00000060       __imp_TerminateProcess     0000000180017060     kernel32:KERNEL32.dll
+ 0002:00000068       __imp_Sleep                0000000180017068     kernel32:KERNEL32.dll
+ 0002:00000070       __imp_DecodePointer        0000000180017070     kernel32:KERNEL32.dll
+ 0002:00000078       __imp_EncodePointer        0000000180017078     kernel32:KERNEL32.dll
+ 0002:00000080       __imp_GetSystemTimeAsFileTime 0000000180017080     kernel32:KERNEL32.dll
+ 0002:00000088       \177KERNEL32_NULL_THUNK_DATA 0000000180017088     kernel32:KERNEL32.dll
+ 0002:00000090       __imp__onexit              0000000180017090     MSVCRT:MSVCR100.dll
+ 0002:00000098       __imp__lock                0000000180017098     MSVCRT:MSVCR100.dll
+ 0002:000000a0       __imp___dllonexit          00000001800170a0     MSVCRT:MSVCR100.dll
+ 0002:000000a8       __imp__unlock              00000001800170a8     MSVCRT:MSVCR100.dll
+ 0002:000000b0       __imp___clean_type_info_names_internal 00000001800170b0     MSVCRT:MSVCR100.dll
+ 0002:000000b8       __imp___crt_debugger_hook  00000001800170b8     MSVCRT:MSVCR100.dll
+ 0002:000000c0       __imp___CppXcptFilter      00000001800170c0     MSVCRT:MSVCR100.dll
+ 0002:000000c8       __imp___C_specific_handler 00000001800170c8     MSVCRT:MSVCR100.dll
+ 0002:000000d0       __imp__amsg_exit           00000001800170d0     MSVCRT:MSVCR100.dll
+ 0002:000000d8       __imp__encoded_null        00000001800170d8     MSVCRT:MSVCR100.dll
+ 0002:000000e0       __imp__initterm_e          00000001800170e0     MSVCRT:MSVCR100.dll
+ 0002:000000e8       __imp__initterm            00000001800170e8     MSVCRT:MSVCR100.dll
+ 0002:000000f0       __imp__malloc_crt          00000001800170f0     MSVCRT:MSVCR100.dll
+ 0002:000000f8       __imp_memcpy               00000001800170f8     MSVCRT:MSVCR100.dll
+ 0002:00000100       __imp_strcat               0000000180017100     MSVCRT:MSVCR100.dll
+ 0002:00000108       __imp_strlen               0000000180017108     MSVCRT:MSVCR100.dll
+ 0002:00000110       __imp_malloc               0000000180017110     MSVCRT:MSVCR100.dll
+ 0002:00000118       __imp_sprintf              0000000180017118     MSVCRT:MSVCR100.dll
+ 0002:00000120       __imp_free                 0000000180017120     MSVCRT:MSVCR100.dll
+ 0002:00000128       __imp_memset               0000000180017128     MSVCRT:MSVCR100.dll
+ 0002:00000130       __imp_strcmp               0000000180017130     MSVCRT:MSVCR100.dll
+ 0002:00000138       \177MSVCR100_NULL_THUNK_DATA 0000000180017138     MSVCRT:MSVCR100.dll
+ 0002:00000140       __imp_mexLock              0000000180017140     libmex:libmex.dll
+ 0002:00000148       __imp_mexErrMsgTxt         0000000180017148     libmex:libmex.dll
+ 0002:00000150       __imp_mexCallMATLAB        0000000180017150     libmex:libmex.dll
+ 0002:00000158       __imp_mexWarnMsgTxt        0000000180017158     libmex:libmex.dll
+ 0002:00000160       __imp_mexIsLocked          0000000180017160     libmex:libmex.dll
+ 0002:00000168       __imp_mexUnlock            0000000180017168     libmex:libmex.dll
+ 0002:00000170       __imp_mexMakeArrayPersistent 0000000180017170     libmex:libmex.dll
+ 0002:00000178       \177libmex_NULL_THUNK_DATA 0000000180017178     libmex:libmex.dll
+ 0002:00000180       __imp_mxCalloc             0000000180017180     libmx:libmx.dll
+ 0002:00000188       __imp_mxGetM               0000000180017188     libmx:libmx.dll
+ 0002:00000190       __imp_mxGetN               0000000180017190     libmx:libmx.dll
+ 0002:00000198       __imp_mxIsComplex          0000000180017198     libmx:libmx.dll
+ 0002:000001a0       __imp_mxIsNumeric          00000001800171a0     libmx:libmx.dll
+ 0002:000001a8       __imp_mxGetClassID         00000001800171a8     libmx:libmx.dll
+ 0002:000001b0       __imp_mxCreateCellMatrix_730 00000001800171b0     libmx:libmx.dll
+ 0002:000001b8       __imp_mxCreateStructMatrix_730 00000001800171b8     libmx:libmx.dll
+ 0002:000001c0       __imp_mxCreateString       00000001800171c0     libmx:libmx.dll
+ 0002:000001c8       __imp_mxSetField_730       00000001800171c8     libmx:libmx.dll
+ 0002:000001d0       __imp_mxCreateDoubleScalar 00000001800171d0     libmx:libmx.dll
+ 0002:000001d8       __imp_mxDestroyArray       00000001800171d8     libmx:libmx.dll
+ 0002:000001e0       __imp_mxIsChar             00000001800171e0     libmx:libmx.dll
+ 0002:000001e8       __imp_mxGetString_730      00000001800171e8     libmx:libmx.dll
+ 0002:000001f0       __imp_mxCreateDoubleMatrix_730 00000001800171f0     libmx:libmx.dll
+ 0002:000001f8       __imp_mxGetPr              00000001800171f8     libmx:libmx.dll
+ 0002:00000200       __imp_mxGetScalar          0000000180017200     libmx:libmx.dll
+ 0002:00000208       __imp_mxDuplicateArray     0000000180017208     libmx:libmx.dll
+ 0002:00000210       \177libmx_NULL_THUNK_DATA  0000000180017210     libmx:libmx.dll
+ 0002:00000218       __imp_utMalloc             0000000180017218     libut:libut.dll
+ 0002:00000220       __imp_utFree               0000000180017220     libut:libut.dll
+ 0002:00000228       \177libut_NULL_THUNK_DATA  0000000180017228     libut:libut.dll
+ 0002:00000230       __imp_callMdlMethodAndReportError 0000000180017230     sf_runtime:sf_runtime.dll
+ 0002:00000238       __imp_call_sf_machine_global_method_dispatcher 0000000180017238     sf_runtime:sf_runtime.dll
+ 0002:00000240       __imp_sf_clear_rtw_identifier 0000000180017240     sf_runtime:sf_runtime.dll
+ 0002:00000248       __imp_sf_mex_error_direct_call 0000000180017248     sf_runtime:sf_runtime.dll
+ 0002:00000250       __imp_sf_debug_read_before_write_check 0000000180017250     sf_runtime:sf_runtime.dll
+ 0002:00000258       __imp_sf_debug_eml_data_array_bounds_error_check 0000000180017258     sf_runtime:sf_runtime.dll
+ 0002:00000260       __imp_sf_debug_symbol_scope_add_importable 0000000180017260     sf_runtime:sf_runtime.dll
+ 0002:00000268       __imp_sf_call_output_fcn_call 0000000180017268     sf_runtime:sf_runtime.dll
+ 0002:00000270       __imp_sf_debug_unset_instance_data_value_ptr 0000000180017270     sf_runtime:sf_runtime.dll
+ 0002:00000278       __imp_sf_debug_symbol_scope_push_eml 0000000180017278     sf_runtime:sf_runtime.dll
+ 0002:00000280       __imp_sf_debug_get_animation 0000000180017280     sf_runtime:sf_runtime.dll
+ 0002:00000288       __imp_sf_debug_symbol_scope_add_eml_importable 0000000180017288     sf_runtime:sf_runtime.dll
+ 0002:00000290       __imp_cv_eval_point        0000000180017290     sf_runtime:sf_runtime.dll
+ 0002:00000298       __imp_cv_eml_eval          0000000180017298     sf_runtime:sf_runtime.dll
+ 0002:000002a0       __imp_sf_debug_api         00000001800172a0     sf_runtime:sf_runtime.dll
+ 0002:000002a8       __imp_sf_mex_call_debug    00000001800172a8     sf_runtime:sf_runtime.dll
+ 0002:000002b0       __imp_sf_mex_sub           00000001800172b0     sf_runtime:sf_runtime.dll
+ 0002:000002b8       __imp_sf_debug_symbol_scope_push 00000001800172b8     sf_runtime:sf_runtime.dll
+ 0002:000002c0       __imp_sf_debug_data_range_wrapper 00000001800172c0     sf_runtime:sf_runtime.dll
+ 0002:000002c8       __imp_sf_debug_symbol_scope_pop 00000001800172c8     sf_runtime:sf_runtime.dll
+ 0002:000002d0       __imp_sf_debug_check_for_state_inconsistency 00000001800172d0     sf_runtime:sf_runtime.dll
+ 0002:000002d8       __imp_sf_call_output_fcn_disable 00000001800172d8     sf_runtime:sf_runtime.dll
+ 0002:000002e0       __imp_sf_call_output_fcn_enable 00000001800172e0     sf_runtime:sf_runtime.dll
+ 0002:000002e8       __imp_sf_get_time          00000001800172e8     sf_runtime:sf_runtime.dll
+ 0002:000002f0       __imp_sf_debug_initialize_chart 00000001800172f0     sf_runtime:sf_runtime.dll
+ 0002:000002f8       __imp_sf_debug_set_chart_disable_implicit_casting 00000001800172f8     sf_runtime:sf_runtime.dll
+ 0002:00000300       __imp_sf_debug_set_chart_event_thresholds 0000000180017300     sf_runtime:sf_runtime.dll
+ 0002:00000308       __imp_sf_debug_set_chart_data_props 0000000180017308     sf_runtime:sf_runtime.dll
+ 0002:00000310       __imp_sf_debug_set_chart_state_info 0000000180017310     sf_runtime:sf_runtime.dll
+ 0002:00000318       __imp_sf_debug_set_chart_substate_count 0000000180017318     sf_runtime:sf_runtime.dll
+ 0002:00000320       __imp_sf_debug_set_chart_decomposition 0000000180017320     sf_runtime:sf_runtime.dll
+ 0002:00000328       __imp_sf_debug_create_debug_instance_struct 0000000180017328     sf_runtime:sf_runtime.dll
+ 0002:00000330       __imp_sf_mex_printf        0000000180017330     sf_runtime:sf_runtime.dll
+ 0002:00000338       __imp_sf_debug_terminate   0000000180017338     sf_runtime:sf_runtime.dll
+ 0002:00000340       __imp_sf_debug_set_chart_substate_index 0000000180017340     sf_runtime:sf_runtime.dll
+ 0002:00000348       __imp_sf_debug_set_chart_state_substate_count 0000000180017348     sf_runtime:sf_runtime.dll
+ 0002:00000350       __imp_sf_debug_cv_init_chart 0000000180017350     sf_runtime:sf_runtime.dll
+ 0002:00000358       __imp_sf_debug_cv_init_state 0000000180017358     sf_runtime:sf_runtime.dll
+ 0002:00000360       __imp_sf_debug_cv_init_trans 0000000180017360     sf_runtime:sf_runtime.dll
+ 0002:00000368       __imp_cv_eml_init_script   0000000180017368     sf_runtime:sf_runtime.dll
+ 0002:00000370       __imp_cv_eml_init_if       0000000180017370     sf_runtime:sf_runtime.dll
+ 0002:00000378       __imp_sf_debug_set_chart_data_compiled_props 0000000180017378     sf_runtime:sf_runtime.dll
+ 0002:00000380       __imp_sf_debug_set_instance_data_value_ptr 0000000180017380     sf_runtime:sf_runtime.dll
+ 0002:00000388       __imp_sf_debug_reset_current_state_configuration 0000000180017388     sf_runtime:sf_runtime.dll
+ 0002:00000390       __imp_sim_mode_is_rtw_gen  0000000180017390     sf_runtime:sf_runtime.dll
+ 0002:00000398       __imp_sim_mode_is_external 0000000180017398     sf_runtime:sf_runtime.dll
+ 0002:000003a0       __imp_sf_is_chart_inlinable 00000001800173a0     sf_runtime:sf_runtime.dll
+ 0002:000003a8       __imp_sf_rtw_info_uint_prop 00000001800173a8     sf_runtime:sf_runtime.dll
+ 0002:000003b0       __imp_sf_update_buildInfo  00000001800173b0     sf_runtime:sf_runtime.dll
+ 0002:000003b8       __imp_sf_mark_output_events_with_multiple_callers 00000001800173b8     sf_runtime:sf_runtime.dll
+ 0002:000003c0       __imp_sf_mark_chart_expressionable_inputs 00000001800173c0     sf_runtime:sf_runtime.dll
+ 0002:000003c8       __imp_sf_mark_chart_reusable_outputs 00000001800173c8     sf_runtime:sf_runtime.dll
+ 0002:000003d0       __imp_sf_set_rtw_dwork_info 00000001800173d0     sf_runtime:sf_runtime.dll
+ 0002:000003d8       __imp_sf_mex_duplicatearraysafe 00000001800173d8     sf_runtime:sf_runtime.dll
+ 0002:000003e0       __imp_sf_mex_import        00000001800173e0     sf_runtime:sf_runtime.dll
+ 0002:000003e8       __imp_sf_debug_set_animation 00000001800173e8     sf_runtime:sf_runtime.dll
+ 0002:000003f0       __imp_sf_debug_set_honor_breakpoints 00000001800173f0     sf_runtime:sf_runtime.dll
+ 0002:000003f8       __imp_sf_debug_call        00000001800173f8     sf_runtime:sf_runtime.dll
+ 0002:00000400       __imp_sf_debug_animate     0000000180017400     sf_runtime:sf_runtime.dll
+ 0002:00000408       __imp_sf_mex_dup           0000000180017408     sf_runtime:sf_runtime.dll
+ 0002:00000410       __imp_sf_mex_getcell       0000000180017410     sf_runtime:sf_runtime.dll
+ 0002:00000418       __imp_sf_mex_destroy       0000000180017418     sf_runtime:sf_runtime.dll
+ 0002:00000420       __imp_sf_mex_decode_encoded_mx_struct_array 0000000180017420     sf_runtime:sf_runtime.dll
+ 0002:00000428       __imp_sf_mex_createcellmatrix 0000000180017428     sf_runtime:sf_runtime.dll
+ 0002:00000430       __imp_sf_mex_setcell       0000000180017430     sf_runtime:sf_runtime.dll
+ 0002:00000438       __imp_sf_mex_call_matlab   0000000180017438     sf_runtime:sf_runtime.dll
+ 0002:00000440       __imp_sf_mex_error_message 0000000180017440     sf_runtime:sf_runtime.dll
+ 0002:00000448       __imp_sf_mex_create        0000000180017448     sf_runtime:sf_runtime.dll
+ 0002:00000450       __imp_sf_mex_assign        0000000180017450     sf_runtime:sf_runtime.dll
+ 0002:00000458       __imp_sf_load_rtw_optimization_info 0000000180017458     sf_runtime:sf_runtime.dll
+ 0002:00000460       __imp_sf_debug_initialize_machine 0000000180017460     sf_runtime:sf_runtime.dll
+ 0002:00000468       __imp_sf_debug_set_machine_event_thresholds 0000000180017468     sf_runtime:sf_runtime.dll
+ 0002:00000470       __imp_sf_clear_error_manager_info 0000000180017470     sf_runtime:sf_runtime.dll
+ 0002:00000478       __imp_sf_debug_set_machine_data_thresholds 0000000180017478     sf_runtime:sf_runtime.dll
+ 0002:00000480       \177sf_runtime_NULL_THUNK_DATA 0000000180017480     sf_runtime:sf_runtime.dll
+ 0002:00000488       __xc_a                     0000000180017488     MSVCRT:cinitexe.obj
+ 0002:00000490       __xc_z                     0000000180017490     MSVCRT:cinitexe.obj
+ 0002:00000498       __xi_a                     0000000180017498     MSVCRT:cinitexe.obj
+ 0002:000004a8       __xi_z                     00000001800174a8     MSVCRT:cinitexe.obj
+ 0002:000004b0       __real@41cc9a97b7000000    00000001800174b0     Rocket_SM_V2_sfun.obj
+ 0002:000004b8       __real@41ea9b0d2cc00000    00000001800174b8     Rocket_SM_V2_sfun.obj
+ 0002:000004c0       __real@41ed60de6b600000    00000001800174c0     Rocket_SM_V2_sfun.obj
+ 0002:000004c8       __real@41bfb732a4000000    00000001800174c8     Rocket_SM_V2_sfun.obj
+ 0002:000004d0       __real@41c900e78a000000    00000001800174d0     Rocket_SM_V2_sfun.obj
+ 0002:000004d8       __real@41eda5398c800000    00000001800174d8     Rocket_SM_V2_sfun.obj
+ 0002:000004e0       __real@41edcf5b43c00000    00000001800174e0     Rocket_SM_V2_sfun.obj
+ 0002:000004e8       __real@41e695dff8600000    00000001800174e8     Rocket_SM_V2_sfun.obj
+ 0002:000004f0       __real@41aafb5586000000    00000001800174f0     Rocket_SM_V2_sfun.obj
+ 0002:000004f8       __real@41e73e2cd3000000    00000001800174f8     Rocket_SM_V2_sfun.obj
+ 0002:00000500       __real@41c96f1624000000    0000000180017500     Rocket_SM_V2_sfun.obj
+ 0002:00000508       __real@41e045fb98a00000    0000000180017508     Rocket_SM_V2_sfun.obj
+ 0002:00000510       __real@41e9518507000000    0000000180017510     Rocket_SM_V2_sfun.obj
+ 0002:00000518       __real@41e9fd2469600000    0000000180017518     Rocket_SM_V2_sfun.obj
+ 0002:00000520       __real@41b6ada70d000000    0000000180017520     Rocket_SM_V2_sfun.obj
+ 0002:00000528       __real@41ec36f5c3e00000    0000000180017528     Rocket_SM_V2_sfun.obj
+ 0002:00000530       __real@41ecfc73cfe00000    0000000180017530     c3_Rocket_SM_V2.obj
+ 0002:00000538       __real@41d487aae9800000    0000000180017538     c3_Rocket_SM_V2.obj
+ 0002:00000540       __real@41d28e8da9400000    0000000180017540     c3_Rocket_SM_V2.obj
+ 0002:00000548       __real@416b6a1620000000    0000000180017548     c3_Rocket_SM_V2.obj
+ 0002:00000550       __real@4000000000000000    0000000180017550     c3_Rocket_SM_V2.obj
+ 0002:00000558       __real@4024000000000000    0000000180017558     c3_Rocket_SM_V2.obj
+ 0002:00000560       __real@3ff0000000000000    0000000180017560     c3_Rocket_SM_V2.obj
+ 0002:00000568       __real@0000000000000000    0000000180017568     c3_Rocket_SM_V2.obj
+ 0002:00000570       __real@4030000000000000    0000000180017570     c3_Rocket_SM_V2.obj
+ 0002:00000580       DYNAMIC_DIMENSION_DEF      0000000180017580     Rocket_SM_V2_sfun_registry.obj
+ 0002:000005a0       _ssBadLevel2InputAccessMsg 00000001800175a0     Rocket_SM_V2_sfun_registry.obj
+ 0002:00000730       _ssBadLevel2DirectFeedMsg  0000000180017730     Rocket_SM_V2_sfun_registry.obj
+ 0002:00000870       _ssBadLevel2DirectFeedSolutionMsg 0000000180017870     Rocket_SM_V2_sfun_registry.obj
+ 0002:000008e0       _ssBadLevel2ZeroDirectFeedMsg 00000001800178e0     Rocket_SM_V2_sfun_registry.obj
+ 0002:00000a20       _ssBadLevel2ZeroDirectFeedMsg2 0000000180017a20     Rocket_SM_V2_sfun_registry.obj
+ 0002:00000b08       __real@bff0000000000000    0000000180017b08     Rocket_SM_V2_sfun_registry.obj
+ 0002:00000b10       __real@41602cbca0000000    0000000180017b10     Rocket_SM_V2_sfun_registry.obj
+ 0002:00000b18       _pDefaultRawDllMain        0000000180017b18     MSVCRT:crtdll.obj
+ 0002:00000b18       _pRawDllMain               0000000180017b18     MSVCRT:crtdll.obj
+ 0002:00000b30       ?ProcessDetach@NativeDll@<CrtImplementationDetails>@@0IB 0000000180017b30     MSVCRT:tncleanup.obj
+ 0002:00000b34       ?ProcessAttach@NativeDll@<CrtImplementationDetails>@@0IB 0000000180017b34     MSVCRT:tncleanup.obj
+ 0002:00000b38       ?ThreadAttach@NativeDll@<CrtImplementationDetails>@@0IB 0000000180017b38     MSVCRT:tncleanup.obj
+ 0002:00000b3c       ?ThreadDetach@NativeDll@<CrtImplementationDetails>@@0IB 0000000180017b3c     MSVCRT:tncleanup.obj
+ 0002:00000b40       ?ProcessVerifier@NativeDll@<CrtImplementationDetails>@@0IB 0000000180017b40     MSVCRT:tncleanup.obj
+ 0002:00000b48       __rtc_iaa                  0000000180017b48     MSVCRT:_initsect_.obj
+ 0002:00000b50       __rtc_izz                  0000000180017b50     MSVCRT:_initsect_.obj
+ 0002:00000b58       __rtc_taa                  0000000180017b58     MSVCRT:_initsect_.obj
+ 0002:00000b60       __rtc_tzz                  0000000180017b60     MSVCRT:_initsect_.obj
+ 0002:00001218       __IMPORT_DESCRIPTOR_sf_runtime 0000000180018218     sf_runtime:sf_runtime.dll
+ 0002:0000122c       __IMPORT_DESCRIPTOR_libmx  000000018001822c     libmx:libmx.dll
+ 0002:00001240       __IMPORT_DESCRIPTOR_libmex 0000000180018240     libmex:libmex.dll
+ 0002:00001254       __IMPORT_DESCRIPTOR_libut  0000000180018254     libut:libut.dll
+ 0002:00001268       __IMPORT_DESCRIPTOR_MSVCR100 0000000180018268     MSVCRT:MSVCR100.dll
+ 0002:0000127c       __IMPORT_DESCRIPTOR_KERNEL32 000000018001827c     kernel32:KERNEL32.dll
+ 0002:00001290       __NULL_IMPORT_DESCRIPTOR   0000000180018290     sf_runtime:sf_runtime.dll
+ 0003:00001120       DYNAMIC_DIMENSION          000000018001b120     Rocket_SM_V2_sfun_registry.obj
+ 0003:00001d28       __security_cookie          000000018001bd28     MSVCRT:gs_cookie.obj
+ 0003:00001d30       __security_cookie_complement 000000018001bd30     MSVCRT:gs_cookie.obj
+ 0003:00001d38       _fltused                   000000018001bd38     MSVCRT:dllsupp.obj
+ 0003:00001d40       __native_dllmain_reason    000000018001bd40     MSVCRT:natstart.obj
+ 0003:00001d44       __native_vcclrit_reason    000000018001bd44     MSVCRT:natstart.obj
+ 0003:00001e48       sfGlobalDebugInstanceStruct 000000018001be48     Rocket_SM_V2_sfun_registry.obj
+ 0003:000023d0       ?__type_info_root_node@@3U__type_info_node@@A 000000018001c3d0     MSVCRT:tncleanup.obj
+ 0003:000023e0       _Rocket_SM_V2MachineNumber_ 000000018001c3e0     <common>
+ 0003:000023e4       __native_startup_state     000000018001c3e4     <common>
+ 0003:000023e8       __native_startup_lock      000000018001c3e8     <common>
+ 0003:000023f0       __onexitend                000000018001c3f0     <common>
+ 0003:000023f8       __onexitbegin              000000018001c3f8     <common>
+ 0003:00002400       __dyn_tls_init_callback    000000018001c400     <common>
+
+ entry point at        0001:000155b0
+
+ Static symbols
+
+ 0001:00001cd0       get_sim_state_c3_Rocket_SM_V2 0000000180002cd0 f   c3_Rocket_SM_V2.obj
+ 0001:000021f0       sf_get_sim_state_info_c3_Rocket_SM_V2 00000001800031f0 f   c3_Rocket_SM_V2.obj
+ 0001:000023c0       set_sim_state_c3_Rocket_SM_V2 00000001800033c0 f   c3_Rocket_SM_V2.obj
+ 0001:000026e0       c3_update_debugger_state_c3_Rocket_SM_V2 00000001800036e0 f   c3_Rocket_SM_V2.obj
+ 0001:00002ce0       c3_emlrt_marshallIn        0000000180003ce0 f   c3_Rocket_SM_V2.obj
+ 0001:00002d50       c3_b_emlrt_marshallIn      0000000180003d50 f   c3_Rocket_SM_V2.obj
+ 0001:00002de0       c3_e_emlrt_marshallIn      0000000180003de0 f   c3_Rocket_SM_V2.obj
+ 0001:00002e40       c3_f_emlrt_marshallIn      0000000180003e40 f   c3_Rocket_SM_V2.obj
+ 0001:00002ed0       c3_g_emlrt_marshallIn      0000000180003ed0 f   c3_Rocket_SM_V2.obj
+ 0001:00002f40       c3_h_emlrt_marshallIn      0000000180003f40 f   c3_Rocket_SM_V2.obj
+ 0001:00003010       c3_j_emlrt_marshallIn      0000000180004010 f   c3_Rocket_SM_V2.obj
+ 0001:00003090       c3_k_emlrt_marshallIn      0000000180004090 f   c3_Rocket_SM_V2.obj
+ 0001:00003160       mdlProcessParameters_c3_Rocket_SM_V2 0000000180004160 f   c3_Rocket_SM_V2.obj
+ 0001:00003240       initialize_params_c3_Rocket_SM_V2 0000000180004240 f   c3_Rocket_SM_V2.obj
+ 0001:00003250       mdlSetWorkWidths_c3_Rocket_SM_V2 0000000180004250 f   c3_Rocket_SM_V2.obj
+ 0001:00003980       sf_get_instance_specialization 0000000180004980 f   c3_Rocket_SM_V2.obj
+ 0001:00003990       mdlStart_c3_Rocket_SM_V2   0000000180004990 f   c3_Rocket_SM_V2.obj
+ 0001:00003bc0       init_dsm_address_info      0000000180004bc0 f   c3_Rocket_SM_V2.obj
+ 0001:00003bd0       chart_debug_initialization 0000000180004bd0 f   c3_Rocket_SM_V2.obj
+ 0001:000075e0       init_script_number_translation 00000001800085e0 f   c3_Rocket_SM_V2.obj
+ 0001:00007600       c3_sf_marshallOut          0000000180008600 f   c3_Rocket_SM_V2.obj
+ 0001:000076b0       c3_sf_marshallIn           00000001800086b0 f   c3_Rocket_SM_V2.obj
+ 0001:00007750       c3_e_sf_marshallOut        0000000180008750 f   c3_Rocket_SM_V2.obj
+ 0001:00007880       c3_e_sf_marshallIn         0000000180008880 f   c3_Rocket_SM_V2.obj
+ 0001:00007950       c3_f_sf_marshallOut        0000000180008950 f   c3_Rocket_SM_V2.obj
+ 0001:00007aa0       c3_f_sf_marshallIn         0000000180008aa0 f   c3_Rocket_SM_V2.obj
+ 0001:00007b70       c3_i_emlrt_marshallIn      0000000180008b70 f   c3_Rocket_SM_V2.obj
+ 0001:00007c50       sf_opaque_initialize_c3_Rocket_SM_V2 0000000180008c50 f   c3_Rocket_SM_V2.obj
+ 0001:00007c90       initialize_c3_Rocket_SM_V2 0000000180008c90 f   c3_Rocket_SM_V2.obj
+ 0001:00007d30       sf_opaque_enable_c3_Rocket_SM_V2 0000000180008d30 f   c3_Rocket_SM_V2.obj
+ 0001:00007d50       enable_c3_Rocket_SM_V2     0000000180008d50 f   c3_Rocket_SM_V2.obj
+ 0001:00007dd0       sf_opaque_disable_c3_Rocket_SM_V2 0000000180008dd0 f   c3_Rocket_SM_V2.obj
+ 0001:00007df0       disable_c3_Rocket_SM_V2    0000000180008df0 f   c3_Rocket_SM_V2.obj
+ 0001:00007e70       sf_opaque_gateway_c3_Rocket_SM_V2 0000000180008e70 f   c3_Rocket_SM_V2.obj
+ 0001:00007e90       sf_gateway_c3_Rocket_SM_V2 0000000180008e90 f   c3_Rocket_SM_V2.obj
+ 0001:000084c0       c3_set_sim_state_side_effects_c3_Rocket_SM_V2 00000001800094c0 f   c3_Rocket_SM_V2.obj
+ 0001:000086d0       c3_chartstep_c3_Rocket_SM_V2 00000001800096d0 f   c3_Rocket_SM_V2.obj
+ 0001:0000bb50       c3_b_sf_marshallOut        000000018000cb50 f   c3_Rocket_SM_V2.obj
+ 0001:0000bc00       c3_b_sf_marshallIn         000000018000cc00 f   c3_Rocket_SM_V2.obj
+ 0001:0000bca0       c3_c_emlrt_marshallIn      000000018000cca0 f   c3_Rocket_SM_V2.obj
+ 0001:0000bd30       c3_GuideRailFlight         000000018000cd30 f   c3_Rocket_SM_V2.obj
+ 0001:0000d070       c3_UnconstrainedFlight     000000018000e070 f   c3_Rocket_SM_V2.obj
+ 0001:0000e6b0       c3_updateDataWrittenToVector 000000018000f6b0 f   c3_Rocket_SM_V2.obj
+ 0001:0000e730       c3_errorIfDataNotWrittenToFcn 000000018000f730 f   c3_Rocket_SM_V2.obj
+ 0001:0000e7f0       sf_opaque_get_sim_state_c3_Rocket_SM_V2 000000018000f7f0 f   c3_Rocket_SM_V2.obj
+ 0001:0000e810       sf_opaque_set_sim_state_c3_Rocket_SM_V2 000000018000f810 f   c3_Rocket_SM_V2.obj
+ 0001:0000e840       sf_opaque_terminate_c3_Rocket_SM_V2 000000018000f840 f   c3_Rocket_SM_V2.obj
+ 0001:0000e8e0       finalize_c3_Rocket_SM_V2   000000018000f8e0 f   c3_Rocket_SM_V2.obj
+ 0001:0000e910       sf_opaque_init_subchart_simstructs 000000018000f910 f   c3_Rocket_SM_V2.obj
+ 0001:0000e930       initSimStructsc3_Rocket_SM_V2 000000018000f930 f   c3_Rocket_SM_V2.obj
+ 0001:0000e940       mdlRTW_c3_Rocket_SM_V2     000000018000f940 f   c3_Rocket_SM_V2.obj
+ 0001:0000f2b0       getChartInfoFromSimStruct  00000001800102b0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00010950       _ssFatalError              0000000180011950 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013a00       ProcessMexSfunctionCmdLineCall 0000000180014a00 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013b30       sf_debug_api_wrapper       0000000180014b30 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013b80       mdlStart                   0000000180014b80 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013bb0       mdl_start_processing       0000000180014bb0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013c40       mdlTerminate               0000000180014c40 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013c70       mdl_terminate_processing   0000000180014c70 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013cf0       mdlInitializeSampleTimes   0000000180014cf0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013d20       mdlZeroCrossings           0000000180014d20 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013d50       mdl_zeroCrossings_processing 0000000180014d50 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013d90       mdlDerivatives             0000000180014d90 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013dc0       mdl_derivatives_processing 0000000180014dc0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013e10       mdlInitializeConditions    0000000180014e10 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013e40       mdl_initialize_conditions_processing 0000000180014e40 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013e90       mdlEnable                  0000000180014e90 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013ec0       mdl_enable_processing      0000000180014ec0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013f00       mdlDisable                 0000000180014f00 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013f30       mdl_disable_processing     0000000180014f30 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013f70       mdlOutputs                 0000000180014f70 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00013fa0       mdl_outputs_processing     0000000180014fa0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014080       mdl_outputs_continuous_legacy 0000000180015080 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014170       mdlGetTimeOfNextVarHit     0000000180015170 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000141c0       _ProcessMexSfunctionCmdLineCall 00000001800151c0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014910       mdlSetWorkWidths           0000000180015910 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014940       mdlProcessParameters       0000000180015940 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014970       mdlInitializeSizes         0000000180015970 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000149a0       mdlExtModeExec             00000001800159a0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000149d0       mdl_ext_mode_exec_processing 00000001800159d0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014a10       mdlRTW                     0000000180015a10 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014a50       _CreateSimStruct           0000000180015a50 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014be0       _RegNumInputPortsCB        0000000180015be0 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:00014c60       _RegNumOutputPortsCB       0000000180015c60 f   Rocket_SM_V2_sfun_registry.obj
+ 0001:000151b8       pre_c_init                 00000001800161b8 f   MSVCRT:crtdll.obj
+ 0001:00015474       __DllMainCRTStartup        0000000180016474 f   MSVCRT:crtdll.obj
+ 0001:00015ae0       __DllMainCRTStartup$filt$0 0000000180016ae0 f   MSVCRT:crtdll.obj
+ 0001:00015b10       __DllMainCRTStartup$fin$1  0000000180016b10 f   MSVCRT:crtdll.obj
+ 0001:00015b2a       _onexit$fin$0              0000000180016b2a f   MSVCRT:atonexit.obj
+ 0001:00015b50       _IsNonwritableInCurrentImage$filt$0 0000000180016b50 f   MSVCRT:pesect.obj

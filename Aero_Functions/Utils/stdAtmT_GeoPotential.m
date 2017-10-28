@@ -28,6 +28,7 @@ end
 % Sections of the atmosphere based on temperature profile
 altList = {};
 altList{1} = {0, 288.16};
+% altList{1} = {0, 299.817};  % 80 degress fahrenheit
 altList{2} = {11000, 216.66};
 altList{3} = {25000, 216.66};
 altList{4} = {47000, 282.66};

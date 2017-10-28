@@ -21,7 +21,9 @@ function rho = stdAtmD_GeoPotential(altitude)
 %       rho: [kg/m^3] 
 %
 % See also STDATMD, STDATMP_GEOPOTENTIAL, STDATMT_GEOPOTENTIAL
-
+% if altitude <0 
+%     altitude = 0;
+% elseif altitude > 105000
 if altitude < 0 || altitude > 105000
     error('stdAtmD_GeoPotential:InvalidAltitude',...
         'Input Altitude, %0.1f, is not within the valid range of [0,%0.1f]',...

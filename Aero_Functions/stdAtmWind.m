@@ -16,11 +16,5 @@ function w = stdAtmWind(w0,z0,z)
 %        z: [m] (geometric)
 %
 
-%return the equivalent geopotential altitude for a given geometric(true)
-%altitude
-z_geopotential = getGeopotentialALt(z);
-z0_geopotential = getGeopotentialAlt(z0);
-
-%calculate w based on standard model
-w = stdAtmWind_GeoPotential(w0,z0_geopotential,z_geopotential);
+w = w0*(z/z0)^0.1428;
 end

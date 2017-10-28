@@ -333,7 +333,26 @@ classdef Vehicle < handle
         end
         
         function sol = propagate(obj,tspan,varargin)
-            % Propagate the vehicle through space and time
+            % Propagate the vehicle through space and time. Accepts two
+            % optional inputs in the order of (...,rho,ws) which are
+            % anonymous functions of the form @(z)... or @(z,t) that
+            % overloads the standard models for rho and wind speed
+            
+            % define rho and windspeed, either using standard model or 
+            % provided anonymous functions
+            if nargin == 2
+                rho = @(z) stdAtmD(z-R0);
+                ws = @(z) 0;
+            elseif nargin == 3
+                rho = @(z) varargin{1};
+                ws = @(z) 0;
+            elseif nargin == 4
+                rho = @(z) varargin{1};
+                ws = @(z,t) varargin{2};
+            else
+                error('Wrong number of inputs');
+            end
+            
             
             % Ensure all thrusters that are on have enough fuel to fire for
             % the entire time span
@@ -349,23 +368,13 @@ classdef Vehicle < handle
             
             % ensure we are in spherical coordinates
             tmpCS = obj.CoordinateSystem; %store it to change back later
-            obj.CoordinateSystem = 'Spherical';
-            
-            % define rho, either using standard model or provided value
-            if nargin == 2
-                rho = @(z) stdAtmD(z-6.371e6);
-            elseif nargin == 3
-                rho = @(z) varargin{1};
-            else
-                error('Wrong number of inputs');
-            end
+            obj.CoordinateSystem = 'Cartesian';
             
             % define initial conditions y0
             % y0 = [position velocity mass]
-            y0 = zeros(3,1);
-            y0(1) = obj.sv(3);
-            y0(2) = obj.sv(6);
-            y0(3) = obj.mass;
+            y0 = zeros(7,1);
+            y0(1:6) = obj.sv(1:6);
+            y0(7) = obj.mass;
             
             % define ode45 derivative function
             % System of equations:
@@ -373,8 +382,8 @@ classdef Vehicle < handle
             %   y2' = (1/y3)(T - y3*g*y1 - 0.5*cd*rho(y1)*area*y2^2)
             %   y3' = mass_flowrate
             function dy = odefun(~,y,rho,obj) % This is a nested function
-                dy = zeros(3,1);
-                dy(1) = y(2);
+                dy = zeros(7,1);
+                dy(1:3) = y(4:6);
                 dy(2) = (1/y(3))*(obj.thrust ...
                     - y(3)*g(y(1)) ...
                     -(y(2)/abs(y(2)+1e-10))*0.5*obj.cd*...

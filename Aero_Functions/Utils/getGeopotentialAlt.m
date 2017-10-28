@@ -27,7 +27,7 @@ function alt_geopotential = getGeopotentialAlt(altitude)
 % See also GETGEOPOTENTIALALT_ENGLISH
 
 %Define earth's mean radius (NASA standard)
-r = 6.371e6;  %meters
+r = R0;  %meters
 
 %calculate geopotential height
 alt_geopotential = altitude*r/(r+altitude);
